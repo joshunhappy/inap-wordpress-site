@@ -25,6 +25,8 @@ Páginas:
 
 ## Qué se edita en el administrador
 
+Guía paso a paso para quien administra el contenido: [docs/manual-de-uso.md](docs/manual-de-uso.md).
+
 Pensado para Comunicación Social con el rol **Editor** (sin plugins):
 
 | Qué | Dónde |
