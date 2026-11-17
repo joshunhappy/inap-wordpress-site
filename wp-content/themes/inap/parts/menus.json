@@ -1,0 +1,443 @@
+{
+  "utilidad": [
+    "Noticias",
+    "Eventos",
+    "Transparencia",
+    "Contacto"
+  ],
+  "principal": [
+    {
+      "titulo": "Formación",
+      "movil": "",
+      "hub": "Ver toda la agenda académica",
+      "lateral": {
+        "icono": "file-text",
+        "titulo": "Oferta Académica 2026",
+        "texto": "Todos los cursos, diplomados y posgrados del año en un solo documento.",
+        "boton": "Descargar PDF"
+      },
+      "columnas": [
+        {
+          "titulo": "Agenda académica",
+          "enlaces": [
+            {
+              "titulo": "Cursos con opción a certificación",
+              "descripcion": "Valida tus competencias con un certificado oficial",
+              "externo": false
+            },
+            {
+              "titulo": "Cursos y diplomados",
+              "descripcion": "Formación continua a tu ritmo",
+              "externo": false
+            },
+            {
+              "titulo": "Estudios de posgrado",
+              "descripcion": "Maestrías y doctorados",
+              "externo": false
+            },
+            {
+              "titulo": "Investigación y asesoría técnica",
+              "descripcion": "Acompañamiento a instituciones",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Áreas de formación",
+          "enlaces": [
+            {
+              "titulo": "Modernización del Estado",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Gestión administrativa",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Ética y transparencia",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Liderazgo y comunicación",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Planificación y gestión pública",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Derechos humanos e inclusión",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Desarrollo territorial",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Finanzas públicas",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Investigación y conocimiento",
+              "descripcion": "",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Programas",
+          "enlaces": [
+            {
+              "titulo": "Maestría en Gestión Pública Local INAP-USAC",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Diplomado en Gerencia Pública",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Transformación digital e IA en el gobierno",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Yo sé de género (ONU Mujeres)",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Taller de facilitadores INAP–SESAN",
+              "descripcion": "",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Empieza aquí",
+          "enlaces": [
+            {
+              "titulo": "Para servidores públicos",
+              "descripcion": "Rutas según tu puesto",
+              "externo": false
+            },
+            {
+              "titulo": "Para gobiernos locales",
+              "descripcion": "Formación municipal",
+              "externo": false
+            },
+            {
+              "titulo": "Cómo inscribirse",
+              "descripcion": "Guía paso a paso",
+              "externo": false
+            },
+            {
+              "titulo": "Aula virtual",
+              "descripcion": "Continúa tus cursos",
+              "externo": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Fortalecimiento",
+      "movil": "Fortalecimiento institucional",
+      "hub": "Ver fortalecimiento institucional",
+      "lateral": {
+        "icono": "building-2",
+        "titulo": "Fortalece a tu institución",
+        "texto": "Programas grupales, asesoría técnica e investigación para entidades del Estado.",
+        "boton": "Solicitar asesoría"
+      },
+      "columnas": [
+        {
+          "titulo": "Servicios",
+          "enlaces": [
+            {
+              "titulo": "Agenda de servicios",
+              "descripcion": "Programas a la medida de tu institución",
+              "externo": false
+            },
+            {
+              "titulo": "Asesoría y asistencia técnica",
+              "descripcion": "Diagnóstico y acompañamiento",
+              "externo": false
+            },
+            {
+              "titulo": "Modelo de gestión por procesos",
+              "descripcion": "Guía para el sector público",
+              "externo": false
+            },
+            {
+              "titulo": "Formatos y lineamientos",
+              "descripcion": "Plantillas descargables",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Instrumentos de medición",
+          "enlaces": [
+            {
+              "titulo": "Direccionamiento estratégico",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Tecnologías y sistemas de información",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Gestión por procesos",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Marco normativo",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Habilidades gerenciales",
+              "descripcion": "",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Casos de fortalecimiento",
+          "enlaces": [
+            {
+              "titulo": "COPADEH",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Hospital Nacional de Salud Mental Federico Mora",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Instituto Nacional de Estadística (INE)",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Viceministerio de MIPYME",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "Viceministerio del Agua",
+              "descripcion": "",
+              "externo": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Recursos",
+      "movil": "",
+      "hub": "Ver todos los recursos",
+      "lateral": {
+        "icono": "book-open",
+        "titulo": "Revista INAP · 7ma. edición",
+        "texto": "Análisis y experiencias para una gestión pública basada en evidencia.",
+        "boton": "Leer edición"
+      },
+      "columnas": [
+        {
+          "titulo": "Biblioteca",
+          "enlaces": [
+            {
+              "titulo": "CECODINAP",
+              "descripcion": "Centro de Consulta Digital",
+              "externo": true
+            },
+            {
+              "titulo": "Revista INAP",
+              "descripcion": "Todas las ediciones",
+              "externo": false
+            },
+            {
+              "titulo": "Envía tu aporte",
+              "descripcion": "Comparte investigación con el INAP",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Revista INAP",
+          "enlaces": [
+            {
+              "titulo": "7ma. edición",
+              "descripcion": "",
+              "externo": false
+            },
+            {
+              "titulo": "6ta. edición",
+              "descripcion": "",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Legislación",
+          "enlaces": [
+            {
+              "titulo": "Decreto 12-2002",
+              "descripcion": "Código Municipal",
+              "externo": false
+            },
+            {
+              "titulo": "Decreto 15-98",
+              "descripcion": "Ley del IUSI",
+              "externo": false
+            },
+            {
+              "titulo": "Decreto 6-91",
+              "descripcion": "Código Tributario",
+              "externo": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Institución",
+      "movil": "",
+      "hub": "Ver institución",
+      "lateral": "contacto",
+      "columnas": [
+        {
+          "titulo": "Conócenos",
+          "enlaces": [
+            {
+              "titulo": "Quiénes somos",
+              "descripcion": "Misión, visión y valores",
+              "externo": false
+            },
+            {
+              "titulo": "Marco legal y organigrama",
+              "descripcion": "Normativa interna",
+              "externo": false
+            },
+            {
+              "titulo": "Autoridades",
+              "descripcion": "Junta Directiva y Gerencia",
+              "externo": false
+            },
+            {
+              "titulo": "Salud y seguridad ocupacional",
+              "descripcion": "Compromiso con nuestro personal",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Direcciones",
+          "enlaces": [
+            {
+              "titulo": "DIFOGI",
+              "descripcion": "Fortalecimiento de la Gestión Institucional",
+              "externo": false
+            },
+            {
+              "titulo": "DIADI",
+              "descripcion": "Investigación y Análisis para el Desarrollo",
+              "externo": false
+            },
+            {
+              "titulo": "DIDE",
+              "descripcion": "Delegaciones",
+              "externo": false
+            },
+            {
+              "titulo": "DEGI",
+              "descripcion": "Evaluación y Gestión Institucional",
+              "externo": false
+            }
+          ]
+        },
+        {
+          "titulo": "Contacto y empleo",
+          "enlaces": [
+            {
+              "titulo": "Delegaciones",
+              "descripcion": "Oficinas en los departamentos",
+              "externo": false
+            },
+            {
+              "titulo": "Directorio",
+              "descripcion": "Teléfonos y correos",
+              "externo": false
+            },
+            {
+              "titulo": "Trabaja con nosotros",
+              "descripcion": "Buzón de empleo",
+              "externo": false
+            },
+            {
+              "titulo": "Transparencia",
+              "descripcion": "Información pública de oficio (LAIP)",
+              "externo": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pie": [
+    {
+      "titulo": "INAP",
+      "enlaces": [
+        "Conócenos",
+        "Misión y visión",
+        "Qué ofrecemos",
+        "Nuestras delegaciones"
+      ]
+    },
+    {
+      "titulo": "Ayuda",
+      "enlaces": [
+        "Contáctanos",
+        "Tutoriales",
+        "Preguntas frecuentes",
+        "Agenda de servicios"
+      ]
+    },
+    {
+      "titulo": "Más",
+      "enlaces": [
+        "Noticias INAP",
+        "Transparencia",
+        "Recursos formativos",
+        "CECODINAP"
+      ]
+    }
+  ],
+  "redes": [
+    "Facebook",
+    "LinkedIn",
+    "YouTube",
+    "X"
+  ],
+  "contacto": {
+    "phone": "(+502) 2419-8181",
+    "tel": "+50224198181",
+    "email": "informacion@inap.gob.gt",
+    "address": "Boulevard Los Próceres 16-40, zona 10<br />Ciudad de Guatemala"
+  }
+}

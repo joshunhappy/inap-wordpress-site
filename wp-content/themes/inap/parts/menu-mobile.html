@@ -1,0 +1,33 @@
+<dialog id="nav-menu" aria-label="Menú" class="m-0 flex h-dvh max-h-none w-full max-w-none flex-col border-0 bg-base-100 p-0 text-base-content">
+  <div class="flex h-21 shrink-0 items-center justify-between pr-2 pl-4">
+    <a href="/" aria-label="INAP, ir al inicio" class="shrink-0 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"><img src="{{ASSETS}}/brand/logo-color.svg" alt="" width="109" height="67" class="w-[109px] dark:hidden" /><img src="{{ASSETS}}/brand/logo-white.svg" alt="" width="109" height="67" class="hidden w-[109px] dark:block" /></a>
+    <button type="button" class="btn btn-ghost btn-square size-11 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="{{ASSETS}}/lucide/sprite.svg#x" /></svg></button>
+  </div>
+  <div class="min-h-0 flex-1 overflow-y-auto">
+    <div class="px-4 pt-4 pb-2">
+      <form role="search" action="/" class="flex h-11 w-full items-center gap-2.5 rounded-full border pl-4 pr-2 border-base-content/10 bg-surface-subtle has-[input:focus]:border-primary has-[input:focus]:bg-base-100 has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-primary-text">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-base-content"><use href="{{ASSETS}}/lucide/sprite.svg#search" /></svg>
+        <label for="nav-q" class="sr-only">Buscar en el sitio</label>
+        <input id="nav-q" name="s" type="search" enterkeyhint="search" autocomplete="off"
+               placeholder="Busca noticias, eventos o páginas"
+               class="min-w-0 flex-1 truncate bg-transparent text-sm text-base-content outline-none placeholder:text-neutral-text [&::-webkit-search-cancel-button]:hidden" />
+      </form>
+    </div>
+    <nav aria-label="Principal" class="px-4 pt-2 pb-4">
+      <ul>
+        {{secciones}}
+      </ul>
+      <ul aria-label="Más enlaces" class="mt-4 rounded-lg bg-brand-surface px-4 py-1">
+        <li class="border-b border-brand-surface-muted"><a href="{{aula_url}}" target="_blank" rel="noopener" class="flex items-center justify-between rounded-sm py-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-surface-content text-brand-surface-content">Aula virtual<span class="sr-only">(se abre en una pestaña nueva)</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><use href="{{ASSETS}}/lucide/sprite.svg#arrow-up-right" /></svg></a></li>
+        {{movil_utilidad}}
+      </ul>
+    </nav>
+  </div>
+  <div class="flex shrink-0 flex-col gap-3 border-t border-base-content/10 px-4 pt-3 pb-6">
+    <button type="button" aria-pressed="false" class="flex items-center gap-2 self-start rounded-sm py-1 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-text"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="{{ASSETS}}/lucide/sprite.svg#moon" /></svg>Modo oscuro</button>
+    <div class="flex gap-2">
+      <a href="{{login_url}}" class="btn btn-outline btn-primary h-11 flex-1">Iniciar sesión</a>
+      <a href="{{registro_url}}" class="btn btn-primary h-11 flex-1">Regístrate</a>
+    </div>
+  </div>
+</dialog>
