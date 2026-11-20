@@ -8,6 +8,7 @@ defined('ABSPATH') || exit;
 $estado = sanitize_key($_GET['solicitud'] ?? '');
 $campos_error = $estado === 'error' ? explode(',', sanitize_text_field(wp_unslash($_GET['campos'] ?? ''))) : [];
 $err = fn (string $campo) => in_array($campo, $campos_error, true);
+$previo = $estado === 'error' ? inap_tp_solicitud_previa() : [];
 
 $t = 'inap_tp_texto';
 $unidad = inap_tp_unidad();
@@ -19,8 +20,9 @@ $secciones = [
 ];
 
 /** Campo de texto con etiqueta (componente Field). */
-$campo = function (string $id, string $label, array $o = []) use ($err) {
+$campo = function (string $id, string $label, array $o = []) use ($err, $previo) {
     $tipo = $o['type'] ?? 'text';
+    $valor = (string) ($previo[$id] ?? '');
     $ayuda = $o['ayuda'] ?? '';
     $error = $err($id) ? ($o['error'] ?? '') : '';
     $desc = trim(($ayuda ? "{$id}-ayuda " : '') . ($error ? "{$id}-error" : ''));
@@ -32,10 +34,11 @@ $campo = function (string $id, string $label, array $o = []) use ($err) {
         !empty($o['placeholder']) ? ' placeholder="' . esc_attr($o['placeholder']) . '"' : '',
         ($desc ? ' aria-describedby="' . esc_attr($desc) . '"' : '') . ($error ? ' aria-invalid="true"' : '')
     );
+    $valor_attr = $valor !== '' ? ' value="' . esc_attr($valor) . '"' : '';
     $control = match ($tipo) {
-        'textarea' => "<textarea {$attrs} rows=\"4\" class=\"textarea w-full" . ($error ? ' textarea-error' : '') . '"></textarea>',
-        'select' => "<select {$attrs} class=\"select w-full\"><option value=\"\">Selecciona una opción</option>" . implode('', array_map(fn ($v) => '<option>' . esc_html($v) . '</option>', $o['options'])) . '</select>',
-        default => "<input type=\"{$tipo}\" {$attrs} class=\"input w-full" . ($error ? ' input-error' : '') . '" />',
+        'textarea' => "<textarea {$attrs} rows=\"4\" class=\"textarea w-full" . ($error ? ' textarea-error' : '') . '">' . esc_textarea($valor) . '</textarea>',
+        'select' => "<select {$attrs} class=\"select w-full\"><option value=\"\">Selecciona una opción</option>" . implode('', array_map(fn ($v) => '<option' . selected($v, $valor, false) . '>' . esc_html($v) . '</option>', $o['options'])) . '</select>',
+        default => "<input type=\"{$tipo}\" {$attrs} class=\"input w-full" . ($error ? ' input-error' : '') . "\"{$valor_attr} />",
     };
     return '<fieldset class="fieldset min-w-0 flex-1 p-0"><label class="fieldset-legend" for="' . esc_attr($id) . '">' . esc_html($label) . '</label>' . $control
         . ($ayuda ? '<p id="' . esc_attr($id) . '-ayuda" class="label whitespace-normal text-base-content/60">' . esc_html($ayuda) . '</p>' : '')
@@ -110,7 +113,7 @@ inap_back_link('Inicio', home_url('/'));
         <?php if ($estado === 'prueba') : ?>
           <div role="status" class="alert alert-soft alert-info"><?php echo inap_icon('info'); ?><span>Entorno de prueba: los datos son válidos, pero la solicitud no se envió. Falta definir con la Unidad de Información Pública cómo se reciben.</span></div>
         <?php elseif ($estado === 'error') : ?>
-          <div role="alert" class="alert alert-soft alert-error"><?php echo inap_icon('circle-x'); ?><span>Revisa los campos marcados para enviar la solicitud.</span></div>
+          <div role="alert" class="alert alert-soft alert-error"><?php echo inap_icon('circle-x'); ?><span>Revisa los campos marcados para enviar la solicitud.<?php echo !empty($previo['archivo']) ? ' Vuelve a elegir el archivo de apoyo.' : ''; ?></span></div>
         <?php elseif ($estado === 'expirada') : ?>
           <div role="alert" class="alert alert-soft alert-warning"><?php echo inap_icon('triangle-alert'); ?><span>La página estuvo abierta mucho tiempo. Vuelve a enviar la solicitud.</span></div>
         <?php endif; ?>

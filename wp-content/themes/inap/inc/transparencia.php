@@ -305,6 +305,21 @@ function inap_tp_contacto(string $icono, string $html, string $icon_color = 'tex
   Entorno de prueba: valida y vuelve a la página, pero no envía ni guarda la solicitud.
   Falta definir con la Unidad de Información Pública cómo se reciben (correo, sistema propio).
 */
+/** Campos de texto opcionales del formulario (correo y pedido se validan aparte). */
+const INAP_TP_CAMPOS = ['nombre', 'apellidos', 'tipo_id', 'numero_id', 'telefono'];
+
+/** Lo que la persona escribió antes de un error, una sola vez. */
+function inap_tp_solicitud_previa(): array
+{
+    $clave = preg_replace('/[^A-Za-z0-9]/', '', (string) ($_GET['datos'] ?? ''));
+    if ($clave === '') {
+        return [];
+    }
+    $datos = get_transient("inap_solicitud_{$clave}");
+    delete_transient("inap_solicitud_{$clave}");
+    return is_array($datos) ? $datos : [];
+}
+
 add_action('admin_post_nopriv_inap_solicitud', 'inap_tp_recibir_solicitud');
 add_action('admin_post_inap_solicitud', 'inap_tp_recibir_solicitud');
 
@@ -324,7 +339,18 @@ function inap_tp_recibir_solicitud(): void
     if ($pedido === '') {
         $errores[] = 'pedido';
     }
-    $args = $errores ? ['solicitud' => 'error', 'campos' => implode(',', $errores)] : ['solicitud' => 'prueba'];
+    $args = ['solicitud' => 'prueba'];
+    if ($errores) {
+        // Lo escrito vuelve al formulario. La URL lleva solo una clave al azar, nunca los datos.
+        $datos = ['correo' => sanitize_text_field(wp_unslash($_POST['correo'] ?? '')), 'pedido' => $pedido];
+        foreach (INAP_TP_CAMPOS as $c) {
+            $datos[$c] = sanitize_text_field(wp_unslash($_POST[$c] ?? ''));
+        }
+        $datos['archivo'] = !empty($_FILES['archivo']['name']);
+        $clave = wp_generate_password(20, false);
+        set_transient("inap_solicitud_{$clave}", $datos, 10 * MINUTE_IN_SECONDS);
+        $args = ['solicitud' => 'error', 'campos' => implode(',', $errores), 'datos' => $clave];
+    }
     wp_safe_redirect(add_query_arg($args, inap_tp_url()) . '#solicitud');
     exit;
 }

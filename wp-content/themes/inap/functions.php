@@ -5,7 +5,7 @@
 
 defined('ABSPATH') || exit;
 
-const INAP_VERSION = '0.2.0';
+const INAP_VERSION = '0.2.1';
 
 require_once __DIR__ . '/inc/ajustes.php';
 require_once __DIR__ . '/inc/menus.php';
