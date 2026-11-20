@@ -5,19 +5,39 @@
 
 defined('ABSPATH') || exit;
 
-const INAP_VERSION = '0.1.0';
+const INAP_VERSION = '0.2.0';
 
 require_once __DIR__ . '/inc/ajustes.php';
 require_once __DIR__ . '/inc/menus.php';
 require_once __DIR__ . '/inc/transparencia-admin.php';
 require_once __DIR__ . '/inc/transparencia.php';
 
-/** Contenido inicial (menús y numerales de los diseños). Lo corre tools/install.sh; no pisa lo editado. */
+/** Contenido inicial (menús y numerales de los diseños). No pisa lo editado: solo crea lo que falta. */
 function inap_semilla(): void
 {
     inap_semilla_menus();
     inap_semilla_numerales();
 }
+
+/*
+  Al activar el tema (también al subirlo como .zip en un hosting): enlaces permanentes con nombre,
+  que las rutas de Transparencia necesitan, y el contenido inicial.
+*/
+add_action('after_switch_theme', function () {
+    if (!get_option('permalink_structure')) {
+        update_option('permalink_structure', '/%postname%/');
+    }
+    inap_semilla();
+    flush_rewrite_rules();
+});
+
+/* Mientras no exista la portada del sitio institucional, el inicio lleva a Transparencia. */
+add_action('template_redirect', function () {
+    if (is_front_page() && !get_query_var('inap_tp')) {
+        wp_safe_redirect(home_url('/transparencia/'), 302);
+        exit;
+    }
+});
 
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');

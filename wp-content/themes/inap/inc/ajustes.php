@@ -40,6 +40,12 @@ function inap_ajustes_grupos(): array
                         ['aula_url', 'Aula virtual (Moodle)', 'url', '', 'Se abre en una pestaña nueva.'],
                     ],
                 ],
+                'Aviso del sitio' => [
+                    'ayuda' => 'Franja amarilla arriba de todas las páginas. Vacío = sin aviso.',
+                    'campos' => [
+                        ['aviso', 'Texto del aviso', 'text', '', 'Por ejemplo: «Versión de demostración: los datos de Transparencia son de ejemplo».'],
+                    ],
+                ],
             ],
         ],
     ]);

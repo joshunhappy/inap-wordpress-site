@@ -23,6 +23,16 @@ Páginas:
 | `/transparencia/articulo-10/4-personal-y-remuneraciones/` | Numeral · Apartados |
 | `/transparencia/articulo-10/21-fideicomisos-con-fondos-publicos/` | Numeral · Sin información |
 
+## Instalar en un hosting
+
+```bash
+./tools/package.sh            # → dist/inap-<versión>.zip
+```
+
+En el WordPress del hosting: **Apariencia › Temas › Añadir nuevo › Subir tema**, elegir el .zip y **Activar**.
+Al activarlo, el tema crea los menús y los 29 numerales (solo si no existen) y activa los enlaces permanentes.
+Mientras no exista la portada, `/` lleva a `/transparencia/`. Para una demo, escribir el aviso en Ajustes › INAP.
+
 ## Qué se edita en el administrador
 
 Guía paso a paso para quien administra el contenido: [docs/manual-de-uso.md](docs/manual-de-uso.md).

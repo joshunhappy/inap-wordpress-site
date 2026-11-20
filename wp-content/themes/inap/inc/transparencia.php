@@ -25,8 +25,6 @@ add_action('init', function () {
 
 add_filter('query_vars', fn ($v) => array_merge($v, ['inap_tp', 'inap_n']));
 
-add_action('after_switch_theme', 'flush_rewrite_rules');
-
 add_filter('template_include', function ($template) {
     $view = get_query_var('inap_tp');
     if (!$view) {

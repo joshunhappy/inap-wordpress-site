@@ -251,6 +251,7 @@ En **Ajustes › INAP**:
 | **Dirección** | Pie (cada línea en un renglón) y columna «Contacto» (en una sola línea) |
 | **Dirección de la plataforma de cursos** | «Iniciar sesión» lleva a esta dirección + `/login` y «Regístrate» a `/registro` |
 | **Aula virtual (Moodle)** | Enlace «Aula virtual» de la barra superior y del menú de celular. Abre en otra pestaña. |
+| **Texto del aviso** | Franja amarilla arriba de todas las páginas, por ejemplo para una versión de demostración. Vacío = sin aviso. |
 
 Los datos de la **Unidad de Información Pública** son distintos y se cambian en Transparencia › Textos y ajustes.
 
