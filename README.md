@@ -18,7 +18,9 @@ Páginas:
 | Ruta | Pantalla en Figma |
 | --- | --- |
 | `/` | Sitio institucional · Inicio (`front-page.php`) |
-| `/noticias/`, `/eventos/`, `/?s=…` | Sin diseño aún: lista provisional (`index.php`) |
+| `/noticias/` (`?tema=`, `?anio=`, `?q=`) | Sitio institucional · Noticias (`home.php`) |
+| `/{noticia}/` | Sitio institucional · Noticia (`single-post.php`) |
+| `/eventos/`, `/?s=…` | Sin diseño aún: lista provisional (`index.php`) |
 | `/transparencia/` | Transparencia · Inicio · Formulario |
 | `/transparencia/informacion-publica-de-oficio/` | Información pública de oficio |
 | `/transparencia/articulo-10/8-informes-de-ejecucion-presupuestaria/` | Numeral (meses; `?meses` lo abre) |
@@ -33,7 +35,7 @@ Páginas:
 
 En el WordPress del hosting: **Apariencia › Temas › Añadir nuevo › Subir tema**, elegir el .zip y **Activar**.
 Al activarlo, el tema crea lo que falte: menús, los 29 numerales, las páginas Inicio y Noticias (portada estática),
-4 noticias y 3 eventos de ejemplo con sus fotos; y activa los enlaces permanentes. Al reemplazar el tema con un .zip
+13 noticias y 3 eventos de ejemplo con sus fotos; y activa los enlaces permanentes. Al reemplazar el tema con un .zip
 de otra versión («Reemplazar el actual») lo vuelve a revisar, porque WordPress no lo reactiva.
 Para una demo, escribir el aviso en Ajustes › INAP.
 
@@ -47,6 +49,7 @@ Pensado para Comunicación Social con el rol **Editor** (sin plugins):
 | --- | --- |
 | Textos, botones, cursos destacados, servicios y tarjetas del inicio | Página de inicio › Portada, Cursos destacados, Noticias y eventos, Fortalecimiento, Recursos (`inc/inicio.php`) |
 | Noticias (entradas con otro nombre; temas = categorías) | Noticias |
+| Textos de /noticias/ y de cada noticia (pestañas, destacadas, compartir) | Noticias › Página de noticias (`inc/noticias.php`) |
 | Eventos (tipo `inap_evento`: fecha, hora, lugar) | Eventos |
 | Barra superior, mega menús, menú de celular, pie y redes | Apariencia › Menús (4 menús; la estructura está al inicio de `inc/menus.php`) |
 | Teléfono, correo y dirección generales; enlaces a la plataforma de cursos y al Aula virtual | Ajustes › INAP |

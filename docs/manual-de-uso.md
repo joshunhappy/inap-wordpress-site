@@ -29,6 +29,9 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 3.3 [Temas](#33-temas)
    - 3.4 [Elegir la noticia principal del inicio](#34-elegir-la-noticia-principal-del-inicio)
    - 3.5 [Cambiar o quitar una noticia](#35-cambiar-o-quitar-una-noticia)
+   - 3.6 [Cómo se arma la página Noticias](#36-cómo-se-arma-la-página-noticias)
+   - 3.7 [Textos de la página Noticias](#37-textos-de-la-página-noticias)
+   - 3.8 [La página de cada noticia](#38-la-página-de-cada-noticia)
 4. [Eventos](#4-eventos)
    - 4.1 [Publicar un evento](#41-publicar-un-evento)
    - 4.2 [Qué eventos se muestran](#42-qué-eventos-se-muestran)
@@ -68,6 +71,8 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 | Cambiar los cursos del inicio | [2.3](#23-cursos-destacados) |
 | Publicar una noticia | [3.1](#31-publicar-una-noticia) |
 | Que una noticia salga grande en el inicio | [3.4](#34-elegir-la-noticia-principal-del-inicio) |
+| Cambiar el título o la descripción de la página Noticias | [3.7](#37-textos-de-la-página-noticias) |
+| Quitar los enlaces para compartir una noticia | [3.8](#38-la-página-de-cada-noticia) |
 | Publicar un evento | [4.1](#41-publicar-un-evento) |
 | Cambiar una foto | [2.8](#28-fotos-e-íconos), [3.2](#32-foto-de-la-noticia) |
 | Ocultar una sección del inicio | [2.7](#27-ocultar-o-volver-a-mostrar-una-sección-o-tarjeta) |
@@ -92,6 +97,7 @@ Entra a la dirección del sitio seguida de `/wp-admin` (por ejemplo `https://ina
 | --- | --- | --- |
 | Los textos, fotos, cursos, servicios y tarjetas del inicio | **Página de inicio** | [2](#2-página-de-inicio) |
 | Las noticias | **Noticias** | [3](#3-noticias) |
+| Los textos de la página Noticias y de cada noticia | **Noticias › Página de noticias** | [3.7](#37-textos-de-la-página-noticias) |
 | Los eventos | **Eventos** | [4](#4-eventos) |
 | Los meses y documentos de un numeral de Transparencia | **Transparencia › Numerales** | [5](#5-transparencia-publicar-cada-mes), [6](#6-transparencia-numerales-en-detalle) |
 | Los textos de las páginas de Transparencia, el año, el correo de la Unidad | **Transparencia › Textos y ajustes** | [7](#7-transparencia-textos-y-ajustes) |
@@ -109,11 +115,11 @@ Entra a la dirección del sitio seguida de `/wp-admin` (por ejemplo `https://ina
 - **Un campo vacío vuelve al texto del diseño.** Casi todos los campos muestran en gris el texto que el sitio usa si el campo está vacío. Si borras un campo, el sitio vuelve a ese texto; no hay que escribirlo de nuevo.
 - **Las casillas «Mostrar» ocultan sin borrar.** Quitar la marca oculta la sección o tarjeta; los textos se quedan guardados para cuando la vuelvas a mostrar (ver [2.7](#27-ocultar-o-volver-a-mostrar-una-sección-o-tarjeta)).
 - **Nada cambia hasta guardar.** Al final de cada página pulsa **Guardar cambios** (o **Actualizar** / **Publicar** en noticias, eventos y numerales).
-- **«Ver en el sitio»** (junto al título de las pantallas de Página de inicio) abre el inicio en otra pestaña para revisar el resultado.
+- **«Ver en el sitio»** (junto al título de las pantallas de Página de inicio y de Página de noticias) abre la página en otra pestaña para revisar el resultado.
 
 ### 1.5 Si el administrador está en inglés
 
-Los menús propios del sitio (Página de inicio, Noticias, Eventos, Transparencia y los nombres de los campos) están siempre en español. Los de WordPress cambian según el idioma de tu usuario:
+Los menús propios del sitio (Página de inicio, Noticias, Página de noticias, Eventos, Transparencia y los nombres de los campos) están siempre en español. Los de WordPress cambian según el idioma de tu usuario:
 
 | En este manual | En inglés |
 | --- | --- |
@@ -124,6 +130,8 @@ Los menús propios del sitio (Página de inicio, Noticias, Eventos, Transparenci
 | Publicar / Actualizar | Publish / Update |
 | Mover a la papelera | Move to Trash |
 | Extracto | Excerpt |
+| Leyenda (de una foto) | Caption |
+| Bloque Cita | Quote block |
 
 Para ver todo en español: en tu **Perfil**, cambia **Idioma** a **Español**.
 
@@ -262,7 +270,7 @@ Al elegirla, llena el **Texto alternativo**: una frase que describa lo que se ve
 
 ### 3.3 Temas
 
-El tema se ve junto a la fecha («12 nov. 2026 · Formación»). Usa los mismos de siempre para que el sitio se vea ordenado: **Formación**, **Fortalecimiento**, **Recursos**, **Eventos**. Se crean y cambian en **Noticias › Temas**. Usa uno solo por noticia; si marcas varios, se muestra el primero.
+El tema se ve junto a la fecha («12 nov. 2026 · Formación») y como etiqueta en la página de la noticia. En la página Noticias, el filtro **Tema** lista los temas que tienen al menos una noticia publicada. Usa los mismos de siempre para que el sitio se vea ordenado: **Formación**, **Fortalecimiento**, **Recursos**, **Eventos**, **Multimedia**, **Institucional**. Se crean y cambian en **Noticias › Temas**. Usa uno solo por noticia; si marcas varios, se muestra el primero.
 
 ### 3.4 Elegir la noticia principal del inicio
 
@@ -272,12 +280,46 @@ La noticia grande del inicio es la más reciente. Para dejar otra fija en ese lu
 2. En el panel derecho, marca la casilla para **fijar la entrada** en la parte superior.
 3. Pulsa **Actualizar**.
 
-Las noticias fijadas van primero en el inicio. Cuando ya no deba ser la principal, quita la marca.
+Las noticias fijadas van primero en el inicio y en **Destacadas** de la página Noticias ([3.6](#36-cómo-se-arma-la-página-noticias)). Cuando ya no deba ser la principal, quita la marca.
 
 ### 3.5 Cambiar o quitar una noticia
 
 - **Cambiar:** **Noticias › Todas las noticias**, abre la noticia, edítala y pulsa **Actualizar**.
 - **Quitar:** pasa el cursor sobre la noticia en la lista y elige **Mover a la papelera**. Se puede recuperar desde **Papelera** durante 30 días.
+
+### 3.6 Cómo se arma la página Noticias
+
+La página **Noticias** (`/noticias/`) se arma sola con las noticias publicadas; no hay que ordenarlas a mano.
+
+1. **Encabezado:** título y descripción ([3.7](#37-textos-de-la-página-noticias)).
+2. **Pestañas:** Noticias, Eventos y, cuando exista, Multimedia.
+3. **Destacadas:** las 4 noticias más recientes, con las fijadas primero ([3.4](#34-elegir-la-noticia-principal-del-inicio)). La primera sale grande. Son las mismas que salen en el inicio.
+4. **Todas las noticias:** el resto, de la más reciente a la más antigua, 9 por página. Las destacadas no se repiten aquí.
+
+Los visitantes pueden filtrar por **Tema**, **Año** o buscar palabras y pulsar **Filtrar**. Con un filtro puesto, Destacadas se oculta y la lista incluye todas las noticias que coinciden; **Quitar filtros** vuelve a la página completa. El filtro también se puede enlazar: `/noticias/?tema=formacion` muestra solo las de Formación (la última parte es el **slug** del tema, en **Noticias › Temas**).
+
+### 3.7 Textos de la página Noticias
+
+En **Noticias › Página de noticias**:
+
+| Sección | Qué se cambia |
+| --- | --- |
+| **Encabezado** | Título (también se usa en el breadcrumb y en «Regresar» del celular) y descripción. |
+| **Pestañas** | Texto y dirección de Eventos y Multimedia. Una pestaña sin dirección no se muestra; Multimedia está vacía hasta que exista esa sección. **Mostrar** oculta todas las pestañas. |
+| **Destacadas** | Título. Sin la marca **Mostrar**, todas las noticias van en la lista. |
+| **Todas las noticias** | Título, el texto junto al total («de la más reciente a la más antigua») y el mensaje cuando un filtro no encuentra nada. |
+| **Cada noticia** | Ver [3.8](#38-la-página-de-cada-noticia). |
+
+Pulsa **Guardar cambios** y revisa con **Ver en el sitio**.
+
+### 3.8 La página de cada noticia
+
+Cada noticia tiene su página, en una columna de lectura. De arriba abajo: tema y fecha, titular, extracto, foto con su pie, el cuerpo, los enlaces para compartir y los enlaces a la noticia anterior y siguiente.
+
+- **Pie de la foto:** es la **Leyenda** de la foto en **Medios**. Escríbela con el crédito, por ejemplo «Participantes en la sesión inaugural. Foto: Comunicación Social». Sin leyenda, no hay pie.
+- **Cita destacada:** usa el bloque **Cita** del editor; escribe el nombre y cargo de la persona en la línea de abajo. Sale con una raya celeste a la izquierda.
+- **Compartir:** Facebook, LinkedIn, X y «Copiar enlace». En **Noticias › Página de noticias › Cada noticia** se cambia el texto «Compartir:» o se ocultan con la casilla **Mostrar «Compartir»**.
+- **Anterior y siguiente:** salen solas por fecha de publicación. Sus textos («Noticia anterior», «Noticia siguiente») se cambian en la misma sección.
 
 ---
 
@@ -555,6 +597,8 @@ Los datos de la **Unidad de Información Pública** son distintos y se cambian e
 | **Un evento no sale en el inicio** | Le falta la **Fecha**, la fecha ya pasó, o hay 3 eventos más cercanos. Ver [4.2](#42-qué-eventos-se-muestran). |
 | **La noticia grande del inicio no es la que quiero** | Fija la noticia que quieres ([3.4](#34-elegir-la-noticia-principal-del-inicio)) o quita la marca de la que está fijada. |
 | **Una noticia sale sin foto** | Le falta la **Foto de la noticia** ([3.2](#32-foto-de-la-noticia)). |
+| **Una noticia no está en «Todas las noticias»** | Está entre las 4 de **Destacadas**, arriba en la misma página ([3.6](#36-cómo-se-arma-la-página-noticias)). |
+| **La foto de una noticia no tiene pie** | Falta la **Leyenda** de la foto en **Medios** ([3.8](#38-la-página-de-cada-noticia)). |
 | **Puse una foto en un curso y sigue la de ejemplo** | Falta pulsar **Guardar cambios** al final de la página. |
 | **No se guarda el numeral** y el navegador marca un campo | Un enlace no es válido. Debe empezar con `https://`. Si aún no tienes el enlace, deja el campo vacío y la fila como «Pendiente». |
 | **Pulsé «Agregar fila», pero no la veo en la página** | Falta pulsar **Actualizar**. Una fila sin título y sin enlace se descarta. |
@@ -575,9 +619,9 @@ Al instalar el tema, el sitio trae el contenido de los diseños para que se vea 
 
 | Qué | Dónde | Cómo reconocerlo |
 | --- | --- | --- |
-| 4 noticias | **Noticias** | Su texto dice «Noticia de ejemplo». Muévelas a la papelera ([3.5](#35-cambiar-o-quitar-una-noticia)). |
+| 13 noticias | **Noticias** | Su texto empieza con «Noticia de ejemplo» o «Texto de ejemplo». Muévelas a la papelera ([3.5](#35-cambiar-o-quitar-una-noticia)). |
 | 3 eventos | **Eventos** | Su texto dice «Evento de ejemplo». Muévelos a la papelera ([4.3](#43-cambiar-o-quitar-un-evento)). |
-| 4 fotos | **Medios** | Se llaman «Foto de ejemplo». Bórralas después de quitar las noticias. |
+| 4 fotos | **Medios** | Se llaman «Foto de ejemplo»; su leyenda también lo dice. Bórralas después de quitar las noticias. |
 | Textos, cursos, servicios y tarjetas del inicio | **Página de inicio** | Son los del diseño. Revisa cada pantalla ([2](#2-página-de-inicio)). |
 | Fotos de los cursos | **Página de inicio › Cursos destacados** | Mientras no elijas otra, se usa la foto de ejemplo ([2.8](#28-fotos-e-íconos)). |
 | Filas de los 29 numerales | **Transparencia › Numerales** | Fechas inventadas y enlaces vacíos ([5](#5-transparencia-publicar-cada-mes)). |
@@ -587,7 +631,7 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 ### Lo que todavía no está listo
 
 - **Formulario «Solicitud de información»:** revisa que los datos estén completos, pero **todavía no envía ni guarda la solicitud**. Falta acordar con la Unidad de Información Pública cómo se reciben (correo o sistema propio). Mientras tanto, el inicio de Transparencia muestra el correo de la Unidad.
-- **Páginas de Noticias, de una noticia, de Eventos y de un evento:** funcionan, pero con un diseño provisional y sencillo. Los diseños finales de Noticias ya están en Figma y se construirán después; este manual se actualizará entonces.
+- **Páginas de Eventos y de un evento:** funcionan, pero con un diseño provisional y sencillo hasta que se diseñen.
+- **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.
 - **Demás secciones del sitio** (Fortalecimiento, Recursos, Institución, Contacto): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.
-- **Barra fija al desplazarse:** el diseño la tiene, pero aún no está construida.

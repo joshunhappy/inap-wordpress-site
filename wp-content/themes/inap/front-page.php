@@ -131,10 +131,6 @@ get_header();
   $noticias = inap_inicio_visible('noticias') ? inap_inicio_noticias() : [];
   $con_eventos = inap_inicio_visible('noticias', 'eventos_mostrar');
   $eventos = $con_eventos ? inap_inicio_eventos() : [];
-  $meta = fn (array $n) => '<p class="text-sm text-neutral-text"><time datetime="' . esc_attr($n['iso']) . '">' . esc_html($n['fecha']) . '</time>' . ($n['tema'] !== '' ? ' · ' . esc_html($n['tema']) : '') . '</p>';
-  $foto = fn (array $n, string $class) => $n['imagen'] !== ''
-      ? '<img src="' . esc_url($n['imagen']) . '" alt="' . esc_attr($n['alt']) . '" loading="lazy" class="' . $class . ' object-cover" />'
-      : '<span class="' . $class . ' flex items-center justify-center bg-brand-surface text-brand-surface-content">' . inap_icon('newspaper', 32) . '</span>';
   if ($noticias || $con_eventos) :
   ?>
     <div class="mx-auto flex w-full max-w-360 flex-col gap-12 px-4 py-12 lg:flex-row lg:items-start lg:px-30 lg:py-24">
@@ -147,31 +143,12 @@ get_header();
             <a href="<?php echo esc_url(inap_url($nv('enlace_url'))); ?>" class="<?php echo $enlace; ?> order-last self-start text-primary-text lg:order-none lg:self-end"><?php echo esc_html($nv('enlace_texto')) . $flecha(); ?></a>
           <?php endif; ?>
           <div class="flex flex-col gap-5 lg:col-span-2 lg:flex-row lg:items-start lg:gap-6">
-            <article class="group relative flex flex-col overflow-hidden rounded-box border border-base-border bg-base-100 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-primary-text lg:min-w-0 lg:flex-1">
-              <?php echo $foto($principal, 'h-54 w-full'); ?>
-              <div class="flex flex-col gap-2 px-5 pt-5 pb-6">
-                <?php echo $meta($principal); ?>
-                <h3 class="text-xl font-semibold text-base-content group-hover:text-primary-text">
-                  <a href="<?php echo esc_url($principal['url']); ?>" class="after:absolute after:inset-0 focus-visible:outline-none"><?php echo esc_html($principal['titulo']); ?></a>
-                </h3>
-                <?php if ($principal['resumen'] !== '') : ?>
-                  <p class="text-sm text-neutral-text"><?php echo esc_html($principal['resumen']); ?></p>
-                <?php endif; ?>
-              </div>
-            </article>
+            <?php echo inap_noticia_tarjeta($principal, 'vertical', 'h3', 'lg:min-w-0 lg:flex-1'); ?>
             <?php if ($noticias) : ?>
               <ul class="flex flex-col gap-5 lg:min-w-0 lg:flex-1 lg:gap-6">
                 <?php foreach ($noticias as $n) : ?>
                   <li>
-                    <article class="group relative flex items-start gap-4 rounded-box has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-primary-text">
-                      <?php echo $foto($n, 'h-24 w-32 shrink-0 rounded-lg'); ?>
-                      <div class="flex min-w-0 flex-1 flex-col gap-2">
-                        <?php echo $meta($n); ?>
-                        <h3 class="text-base leading-6 font-semibold text-base-content group-hover:text-primary-text">
-                          <a href="<?php echo esc_url($n['url']); ?>" class="after:absolute after:inset-0 focus-visible:outline-none"><?php echo esc_html($n['titulo']); ?></a>
-                        </h3>
-                      </div>
-                    </article>
+                    <?php echo inap_noticia_tarjeta($n, 'horizontal'); ?>
                   </li>
                 <?php endforeach; ?>
               </ul>

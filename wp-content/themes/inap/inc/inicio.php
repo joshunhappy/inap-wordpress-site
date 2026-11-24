@@ -267,29 +267,10 @@ function inap_inicio_imagen(string $pagina, string $clave): string
 
 const INAP_MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
-/** Las noticias del inicio: las fijadas primero, luego las más recientes. */
+/** Las noticias del inicio: las mismas destacadas de /noticias/ (inc/noticias.php). */
 function inap_inicio_noticias(int $cuantas = 4): array
 {
-    $fijadas = array_map('intval', (array) get_option('sticky_posts', []));
-    $posts = $fijadas ? get_posts(['post__in' => $fijadas, 'numberposts' => $cuantas, 'orderby' => 'date', 'order' => 'DESC']) : [];
-    if (count($posts) < $cuantas) {
-        $posts = array_merge($posts, get_posts(['numberposts' => $cuantas - count($posts), 'post__not_in' => $fijadas, 'ignore_sticky_posts' => true]));
-    }
-    return array_map(function (WP_Post $p) {
-        $tema = get_the_category($p->ID)[0]->name ?? '';
-        $tema = $tema === 'Sin categoría' || $tema === 'Uncategorized' ? '' : $tema;
-        $imagen = (int) get_post_thumbnail_id($p);
-        return [
-            'titulo' => get_the_title($p),
-            'url' => get_permalink($p),
-            'fecha' => inap_tp_fecha(get_the_date('Y-m-d', $p)),
-            'iso' => get_the_date('Y-m-d', $p),
-            'tema' => $tema,
-            'resumen' => has_excerpt($p) ? get_the_excerpt($p) : '',
-            'imagen' => $imagen ? (string) wp_get_attachment_image_url($imagen, 'large') : '',
-            'alt' => $imagen ? (string) get_post_meta($imagen, '_wp_attachment_image_alt', true) : '',
-        ];
-    }, $posts);
+    return inap_noticias_destacadas($cuantas);
 }
 
 /** Los próximos eventos (desde hoy), del más cercano al más lejano. */

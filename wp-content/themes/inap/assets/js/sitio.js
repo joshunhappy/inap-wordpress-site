@@ -73,6 +73,18 @@
     }, { rootMargin: '-84px 0px 0px 0px' }).observe(heroSearch);
   }
 
+  /* ── Noticia: copiar el enlace (el aviso se lee en la región role="status") ── */
+  $$('[data-copiar]').forEach((b) => b.addEventListener('click', async () => {
+    const aviso = b.parentElement.querySelector('[data-copiado]');
+    try {
+      await navigator.clipboard.writeText(b.dataset.copiar);
+      aviso.textContent = 'Enlace copiado.';
+    } catch {
+      aviso.textContent = 'No se pudo copiar. Copia la dirección desde la barra del navegador.';
+    }
+    setTimeout(() => { aviso.textContent = ''; }, 4000);
+  }));
+
   /* ── Meses anteriores ──────────────────────────────────────────────────── */
   $$('[data-meses]').forEach((b) => {
     const list = $('#' + b.getAttribute('aria-controls'));

@@ -303,7 +303,12 @@ function inap_semilla_menus(): void
         return;
     }
     $ubicaciones = get_nav_menu_locations();
-    $url = fn (string $titulo) => $titulo === 'Transparencia' ? home_url('/transparencia/') : '#';
+    $url = fn (string $titulo) => match ($titulo) {
+        'Transparencia' => home_url('/transparencia/'),
+        'Noticias', 'Noticias INAP' => home_url('/noticias/'),
+        'Eventos' => home_url('/eventos/'),
+        default => '#',
+    };
     $agregar = function (int $menu, string $titulo, int $padre = 0, array $extra = []) use ($url): int {
         return (int) wp_update_nav_menu_item($menu, 0, $extra + [
             'menu-item-title' => $titulo,
