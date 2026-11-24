@@ -180,9 +180,9 @@ function inap_cabecera(): string
         'movil_utilidad' => inap_tpl_lista(array_map(fn ($n, $k) => inap_tpl($k === $ultimo ? 'movil-utilidad-ultimo' : 'movil-utilidad', inap_menu_vars($n['item'])), $utilidad, array_keys($utilidad))),
     ]);
 
-    return '<div class="relative z-40 hidden lg:block" data-barra>' . $escritorio
+    return '<div class="sticky -top-9 z-40 hidden lg:block" data-barra>' . $escritorio
         . '<div class="absolute inset-x-0 top-full"><div class="mx-auto mt-2 max-w-360 px-20">' . implode('', $paneles) . '</div></div></div>'
-        . '<div class="relative z-30 lg:hidden">' . inap_tpl('header-mobile', $enlaces) . $menu_movil . '</div>';
+        . '<div class="sticky top-0 z-30 lg:hidden" data-barra-movil>' . inap_tpl('header-mobile', $enlaces) . $menu_movil . '</div>';
 }
 
 /** Columna lateral del mega menú: tarjeta destacada, contacto o nada. */

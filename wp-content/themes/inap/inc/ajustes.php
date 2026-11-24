@@ -3,6 +3,7 @@
  * Ajustes editables desde el administrador, sin plugins.
  *
  *   Ajustes › INAP                         contacto general y enlaces a la plataforma de cursos
+ *   Página de inicio › …                   textos, fotos y tarjetas del inicio (inc/inicio.php)
  *   Transparencia › Textos y ajustes       textos de las páginas y datos de la Unidad (inc/transparencia-admin.php)
  *
  * Cada página es una lista de campos con su valor por defecto: si nadie la ha guardado, el sitio
@@ -16,7 +17,9 @@ const INAP_CAP = 'edit_pages';
 
 /**
  * @var array<string, array{titulo: string, campos: array}> grupos de campos por opción.
- * Cada campo: [clave, etiqueta, tipo (text|textarea|url|email|number), valor por defecto, ayuda].
+ * Cada campo: [clave, etiqueta, tipo, valor por defecto, ayuda].
+ * Tipos: text, textarea, url, email, number; checkbox ('1' o '0'); imagen (ID del archivo de Medios; por
+ * defecto, una ruta dentro de assets/); icono (nombre de un ícono de INAP_ICONOS).
  */
 function inap_ajustes_grupos(): array
 {
@@ -75,6 +78,58 @@ add_action('admin_menu', function () {
     add_options_page('Ajustes de INAP', 'INAP', INAP_CAP, 'inap_ajustes', fn () => inap_ajustes_pagina('inap_ajustes'));
 });
 
+/* Selector de Medios para los campos de imagen, solo en las páginas de ajustes del tema. */
+add_action('admin_enqueue_scripts', function () {
+    $pagina = sanitize_key($_GET['page'] ?? '');
+    if (!isset(inap_ajustes_grupos()[$pagina])) {
+        return;
+    }
+    wp_enqueue_media();
+    $ver = (string) (@filemtime(get_theme_file_path('assets/js/admin-ajustes.js')) ?: INAP_VERSION);
+    wp_enqueue_script('inap-ajustes', get_theme_file_uri('assets/js/admin-ajustes.js'), [], $ver, ['in_footer' => true]);
+});
+
+/** URL de una imagen guardada (ID de Medios) o, si no hay, de la foto de ejemplo del tema. */
+function inap_imagen_url(string $valor, string $defecto, string $tamano = 'large'): string
+{
+    if ($valor !== '' && ($url = wp_get_attachment_image_url((int) $valor, $tamano))) {
+        return $url;
+    }
+    return $defecto !== '' ? get_theme_file_uri('assets/' . $defecto) : '';
+}
+
+/** Íconos que se pueden elegir en los ajustes (nombre Lucide => nombre en el administrador). */
+const INAP_ICONOS = [
+    'users' => 'Personas',
+    'user-check' => 'Persona con visto bueno',
+    'graduation-cap' => 'Graduación',
+    'school' => 'Escuela',
+    'book-open' => 'Libro abierto',
+    'library' => 'Biblioteca',
+    'newspaper' => 'Periódico',
+    'file-text' => 'Documento',
+    'file-search' => 'Documento con lupa',
+    'clipboard-check' => 'Lista revisada',
+    'landmark' => 'Edificio público',
+    'building-2' => 'Edificio',
+    'scale' => 'Balanza',
+    'gavel' => 'Mazo',
+    'handshake' => 'Apretón de manos',
+    'briefcase' => 'Maletín',
+    'chart-column' => 'Gráfica',
+    'lightbulb' => 'Idea',
+    'target' => 'Objetivo',
+    'award' => 'Premio',
+    'calendar' => 'Calendario',
+    'megaphone' => 'Megáfono',
+    'monitor' => 'Computadora',
+    'globe' => 'Mundo',
+    'map-pin' => 'Ubicación',
+    'mail' => 'Correo',
+    'phone' => 'Teléfono',
+    'circle-help' => 'Ayuda',
+];
+
 add_action('admin_init', function () {
     foreach (array_keys(inap_ajustes_grupos()) as $opcion) {
         register_setting($opcion, $opcion, ['type' => 'array', 'sanitize_callback' => fn ($v) => inap_ajustes_limpiar($opcion, (array) $v)]);
@@ -94,6 +149,9 @@ function inap_ajustes_limpiar(string $opcion, array $valores): array
                 'url' => esc_url_raw(trim($v)),
                 'email' => sanitize_email($v),
                 'number' => $v === '' ? '' : (string) absint($v),
+                'checkbox' => $v === '1' ? '1' : '0',
+                'imagen' => $v === '' ? '' : (string) absint($v),
+                'icono' => isset(INAP_ICONOS[$v]) ? $v : '',
                 default => sanitize_text_field($v),
             };
         }
@@ -106,11 +164,19 @@ function inap_ajustes_pagina(string $opcion): void
 {
     $grupo = inap_ajustes_grupos()[$opcion];
     $guardado = (array) get_option($opcion, []);
-    echo '<div class="wrap"><h1>' . esc_html($grupo['pagina'] ?? 'Ajustes de INAP') . '</h1>';
+    echo '<div class="wrap"><h1 class="wp-heading-inline">' . esc_html($grupo['pagina'] ?? 'Ajustes de INAP') . '</h1>';
+    if (!empty($grupo['ver'])) {
+        printf(' <a href="%s" class="page-title-action" target="_blank">Ver en el sitio<span class="screen-reader-text"> (se abre en una pestaña nueva)</span></a>', esc_url(home_url($grupo['ver'])));
+    }
+    echo '<hr class="wp-header-end" />';
     if (!empty($grupo['intro'])) {
         echo '<p>' . esc_html($grupo['intro']) . '</p>';
     }
     echo '<p>Si dejas un campo vacío, el sitio muestra el texto que aparece en gris.</p>';
+    // Las páginas de Ajustes ya muestran «Ajustes guardados»; las demás lo necesitan aquí.
+    if (($GLOBALS['parent_file'] ?? '') !== 'options-general.php') {
+        settings_errors();
+    }
     echo '<form method="post" action="options.php">';
     settings_fields($opcion);
     foreach ($grupo['secciones'] as $titulo => $seccion) {
@@ -124,8 +190,30 @@ function inap_ajustes_pagina(string $opcion): void
             $name = "{$opcion}[{$clave}]";
             $valor = (string) ($guardado[$clave] ?? '');
             $desc = $ayuda !== '' ? ' aria-describedby="' . esc_attr("{$id}-ayuda") . '"' : '';
-            echo '<tr><th scope="row"><label for="' . esc_attr($id) . '">' . esc_html($etiqueta) . '</label></th><td>';
-            if ($tipo === 'textarea') {
+            $etiqueta_html = $tipo === 'imagen'
+                ? '<span id="' . esc_attr("{$id}-etiqueta") . '">' . esc_html($etiqueta) . '</span>'
+                : '<label for="' . esc_attr($id) . '">' . esc_html($etiqueta) . '</label>';
+            echo '<tr><th scope="row">' . $etiqueta_html . '</th><td>';
+            if ($tipo === 'checkbox') {
+                $marcado = ($valor !== '' ? $valor : $defecto) === '1';
+                printf('<input type="hidden" name="%1$s" value="0" /><input id="%2$s" name="%1$s" type="checkbox" value="1"%3$s%4$s />', esc_attr($name), esc_attr($id), checked($marcado, true, false), $desc);
+            } elseif ($tipo === 'icono') {
+                $actual = $valor !== '' ? $valor : $defecto;
+                printf('<select id="%s" name="%s"%s>', esc_attr($id), esc_attr($name), $desc);
+                foreach (INAP_ICONOS as $icono => $nombre) {
+                    printf('<option value="%s"%s>%s</option>', esc_attr($icono), selected($icono, $actual, false), esc_html($nombre));
+                }
+                echo '</select>';
+            } elseif ($tipo === 'imagen') {
+                $src = inap_imagen_url($valor, $defecto, 'medium');
+                printf(
+                    '<div class="inap-imagen" data-defecto="%1$s"><img src="%2$s" alt="" width="160" style="display:block;max-width:160px;height:auto;margin-bottom:8px;border:1px solid #dcdcde" />'
+                    . '<input type="hidden" id="%3$s" name="%4$s" value="%5$s" />'
+                    . '<button type="button" class="button" data-elegir aria-describedby="%3$s-etiqueta">Elegir imagen</button> '
+                    . '<button type="button" class="button-link" data-quitar aria-describedby="%3$s-etiqueta"%6$s>Usar la foto de ejemplo</button></div>',
+                    esc_url(inap_imagen_url('', $defecto, 'medium')), esc_url($src), esc_attr($id), esc_attr($name), esc_attr($valor), $valor === '' ? ' hidden' : ''
+                );
+            } elseif ($tipo === 'textarea') {
                 printf('<textarea id="%s" name="%s" rows="3" class="large-text" placeholder="%s"%s>%s</textarea>', esc_attr($id), esc_attr($name), esc_attr($defecto), $desc, esc_textarea($valor));
             } else {
                 printf('<input id="%s" name="%s" type="%s" value="%s" placeholder="%s" class="%s"%s />', esc_attr($id), esc_attr($name), esc_attr($tipo), esc_attr($valor), esc_attr($defecto), $tipo === 'number' ? 'small-text' : 'large-text', $desc);

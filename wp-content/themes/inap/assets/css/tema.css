@@ -25,9 +25,9 @@ dialog:not([open]) {
   display: none;
 }
 
-/* El hash #solicitud no debe quedar bajo el borde superior. */
+/* Los anclajes (#solicitud, #fortalecimiento) no deben quedar bajo la barra fija (84 px). */
 html {
-  scroll-padding-top: 1.5rem;
+  scroll-padding-top: 7rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -38,4 +38,13 @@ html {
 
 #contenido:focus {
   outline: none;
+}
+
+/* Barra fija con la barra de administración de WordPress (solo con sesión iniciada): 46 px hasta 782, 32 px desde 783; bajo 600 px no es fija. */
+@media (min-width: 600px) {
+  .admin-bar [data-barra-movil] { top: 46px; }
+}
+@media (min-width: 783px) {
+  .admin-bar [data-barra-movil] { top: 32px; }
+  .admin-bar [data-barra] { top: calc(32px - 2.25rem); }
 }

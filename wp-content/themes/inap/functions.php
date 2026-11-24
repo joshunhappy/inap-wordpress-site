@@ -1,22 +1,24 @@
 <?php
 /**
- * Tema INAP: recursos, íconos, ajustes editables, menús y el módulo de Transparencia.
+ * Tema INAP: recursos, íconos, ajustes editables, menús, página de inicio y el módulo de Transparencia.
  */
 
 defined('ABSPATH') || exit;
 
-const INAP_VERSION = '0.2.1';
+const INAP_VERSION = '0.3.1';
 
 require_once __DIR__ . '/inc/ajustes.php';
 require_once __DIR__ . '/inc/menus.php';
+require_once __DIR__ . '/inc/inicio.php';
 require_once __DIR__ . '/inc/transparencia-admin.php';
 require_once __DIR__ . '/inc/transparencia.php';
 
-/** Contenido inicial (menús y numerales de los diseños). No pisa lo editado: solo crea lo que falta. */
+/** Contenido inicial (menús, numerales, inicio, noticias y eventos de los diseños). No pisa lo editado: solo crea lo que falta. */
 function inap_semilla(): void
 {
     inap_semilla_menus();
     inap_semilla_numerales();
+    inap_semilla_inicio();
 }
 
 /*
@@ -31,13 +33,17 @@ add_action('after_switch_theme', function () {
     flush_rewrite_rules();
 });
 
-/* Mientras no exista la portada del sitio institucional, el inicio lleva a Transparencia. */
-add_action('template_redirect', function () {
-    if (is_front_page() && !get_query_var('inap_tp')) {
-        wp_safe_redirect(home_url('/transparencia/'), 302);
-        exit;
+/*
+  Al reemplazar el tema con un .zip nuevo WordPress no lo vuelve a activar: con otra versión,
+  se crea lo que falte y se rehacen las rutas.
+*/
+add_action('init', function () {
+    if (get_option('inap_tema_version') !== INAP_VERSION) {
+        update_option('inap_tema_version', INAP_VERSION);
+        inap_semilla();
+        flush_rewrite_rules();
     }
-});
+}, 99);
 
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');

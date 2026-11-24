@@ -1,6 +1,6 @@
 /*
   Comportamiento del sitio institucional: modo oscuro, mega menús, menú de celular,
-  meses anteriores y búsqueda de numerales. Sin dependencias.
+  meses anteriores, búsqueda de numerales y buscador del inicio. Sin dependencias.
 */
 (() => {
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -60,6 +60,17 @@
       $('#' + b.getAttribute('aria-controls')).hidden = !open;
       b.closest('li')?.classList.toggle('border-b', !open);
     }));
+  }
+
+  /* ── Inicio: el buscador de la barra (y la lupa en celular) aparece cuando el del hero sale de la vista ──
+     La barra es fija (sticky): el del hero cuenta como fuera de la vista al pasar debajo de ella (84 px). */
+  const heroSearch = $('[data-buscador-inicio]');
+  if (heroSearch && 'IntersectionObserver' in window) {
+    const barSearch = [$('#nav-q')?.closest('form'), $('[aria-controls="nav-buscar"]')].filter(Boolean);
+    new IntersectionObserver(([entry]) => {
+      // visibility: hidden lo saca del orden de tabulación y de los lectores de pantalla.
+      barSearch.forEach((el) => el.classList.toggle('invisible', entry.isIntersecting));
+    }, { rootMargin: '-84px 0px 0px 0px' }).observe(heroSearch);
   }
 
   /* ── Meses anteriores ──────────────────────────────────────────────────── */
