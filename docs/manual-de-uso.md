@@ -36,6 +36,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 4.1 [Publicar un evento](#41-publicar-un-evento)
    - 4.2 [Qué eventos se muestran](#42-qué-eventos-se-muestran)
    - 4.3 [Cambiar o quitar un evento](#43-cambiar-o-quitar-un-evento)
+   - 4.4 [La página Eventos y la de cada evento](#44-la-página-eventos-y-la-de-cada-evento)
 5. [Transparencia: publicar cada mes](#5-transparencia-publicar-cada-mes)
    - 5.1 [Copiar el enlace de la carpeta en OneDrive](#51-copiar-el-enlace-de-la-carpeta-en-onedrive)
    - 5.2 [Pegarlo en el numeral](#52-pegarlo-en-el-numeral)
@@ -167,9 +168,9 @@ En celular el inicio tiene las mismas secciones, una debajo de otra. La única d
 | **Buscador: texto de ejemplo** | Lo que se lee dentro del buscador antes de escribir. Debe decir qué se puede buscar. |
 | **Botón principal** y **Botón secundario** | Texto y enlace de cada botón. El secundario trae `#fortalecimiento`, que baja a la banda azul de la misma página. |
 
-**Tarjeta destacada.** El recuadro a la derecha del título (abajo en celular). Úsalo para una sola cosa importante: un informe, una convocatoria, un anuncio. Tiene **Etiqueta** (la pastilla azul de arriba), **Título**, **Texto** y un enlace (**texto** y **dirección**). Si el enlace es un PDF, súbelo a **Medios**, copia su dirección y pégala en **Enlace: dirección**.
+**Tarjeta destacada.** El recuadro a la derecha del título (abajo en celular). Úsalo para una sola cosa importante: un informe, una convocatoria, un anuncio. Tiene **Mostrar**, **Etiqueta** (la pastilla azul de arriba), **Título**, **Texto** y un enlace (**texto** y **dirección**). Si el enlace es un PDF, súbelo a **Medios**, copia su dirección y pégala en **Enlace: dirección**.
 
-**Franja de Transparencia.** El recuadro gris con la balanza. Tiene título, texto y dos botones. Sus enlaces ya llevan a las páginas de Transparencia; normalmente no hay que cambiarlos.
+**Franja de Transparencia.** El recuadro gris con la balanza. Tiene **Mostrar**, título, texto y dos botones (**Primer botón** y **Segundo botón**, con texto y enlace cada uno). Sus enlaces ya llevan a las páginas de Transparencia; normalmente no hay que cambiarlos.
 
 ### 2.3 Cursos destacados
 
@@ -214,7 +215,10 @@ En **Página de inicio › Recursos**: título y descripción de la sección, y 
 ### 2.7 Ocultar o volver a mostrar una sección o tarjeta
 
 1. Abre la pantalla de **Página de inicio** que tiene la sección (ver [2.1](#21-cómo-está-organizada)).
-2. Quita la marca de **Mostrar** en el grupo de campos que quieres ocultar: el **Encabezado** oculta toda la sección; un **Curso**, **Servicio** o **Tarjeta** oculta solo ese.
+2. Quita la marca de **Mostrar** en el grupo de campos que quieres ocultar:
+   - El primer grupo de la pantalla oculta toda la sección: **Encabezado** (Cursos destacados, Recursos), **Noticias** o **Eventos** (Noticias y eventos), **Texto y botones** (Fortalecimiento).
+   - Un **Curso**, **Servicio** o **Tarjeta** oculta solo ese.
+   - En **Portada**, la **Tarjeta destacada** y la **Franja de Transparencia** tienen cada una su casilla. El encabezado de la portada no se oculta.
 3. Pulsa **Guardar cambios**.
 
 Para volver a mostrarla, marca **Mostrar** otra vez y guarda. Los textos se conservan.
@@ -353,6 +357,13 @@ En el inicio se ve así: el día y el mes en un recuadro, el nombre y debajo «8
 ### 4.3 Cambiar o quitar un evento
 
 Igual que las noticias ([3.5](#35-cambiar-o-quitar-una-noticia)): abre el evento, edítalo y pulsa **Actualizar**; o **Mover a la papelera** desde la lista. Si el evento se pospone, cambia la **Fecha**.
+
+### 4.4 La página Eventos y la de cada evento
+
+- **Eventos** (`/eventos/`): todos los próximos eventos, del más cercano al más lejano, 10 por página. Cada uno muestra su fecha, «hora · lugar» y el nombre, que lleva a la página del evento. Si no hay eventos próximos, muestra el mismo **Texto cuando no hay eventos** del inicio ([2.4](#24-noticias-y-eventos-del-inicio)).
+- **Cada evento** tiene su página con la fecha, la hora, el lugar, el nombre y la descripción que escribiste. Si le pones **Foto del evento** (panel derecho), sale debajo del nombre. El **Extracto**, si lo llenas, se ve en la página Eventos debajo del nombre.
+
+Estas dos páginas tienen por ahora un diseño provisional ([12](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo)): el título «Próximos eventos» todavía no se puede cambiar desde el administrador.
 
 ---
 
@@ -597,6 +608,7 @@ Los datos de la **Unidad de Información Pública** son distintos y se cambian e
 | **Un evento no sale en el inicio** | Le falta la **Fecha**, la fecha ya pasó, o hay 3 eventos más cercanos. Ver [4.2](#42-qué-eventos-se-muestran). |
 | **La noticia grande del inicio no es la que quiero** | Fija la noticia que quieres ([3.4](#34-elegir-la-noticia-principal-del-inicio)) o quita la marca de la que está fijada. |
 | **Una noticia sale sin foto** | Le falta la **Foto de la noticia** ([3.2](#32-foto-de-la-noticia)). |
+| **Un tema nuevo no aparece en el filtro de Noticias** | El filtro solo lista temas con al menos una noticia publicada. Asigna el tema a una noticia ([3.3](#33-temas)). |
 | **Una noticia no está en «Todas las noticias»** | Está entre las 4 de **Destacadas**, arriba en la misma página ([3.6](#36-cómo-se-arma-la-página-noticias)). |
 | **La foto de una noticia no tiene pie** | Falta la **Leyenda** de la foto en **Medios** ([3.8](#38-la-página-de-cada-noticia)). |
 | **Puse una foto en un curso y sigue la de ejemplo** | Falta pulsar **Guardar cambios** al final de la página. |
@@ -631,7 +643,8 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 ### Lo que todavía no está listo
 
 - **Formulario «Solicitud de información»:** revisa que los datos estén completos, pero **todavía no envía ni guarda la solicitud**. Falta acordar con la Unidad de Información Pública cómo se reciben (correo o sistema propio). Mientras tanto, el inicio de Transparencia muestra el correo de la Unidad.
-- **Páginas de Eventos y de un evento:** funcionan, pero con un diseño provisional y sencillo hasta que se diseñen.
+- **Páginas de Eventos y de un evento:** funcionan, pero con un diseño provisional y sencillo. Los diseños finales ya están en Figma y se construirán después ([4.4](#44-la-página-eventos-y-la-de-cada-evento)).
+- **Resultados de búsqueda y página «No encontramos esta página» (404):** funcionan con un diseño provisional. El buscador del sitio encuentra noticias, eventos y páginas; los numerales de Transparencia se buscan con **Buscar un numeral**, en Información pública de oficio.
 - **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.
 - **Demás secciones del sitio** (Fortalecimiento, Recursos, Institución, Contacto): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.

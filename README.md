@@ -72,7 +72,7 @@ inicial de los menús (`parts/menus.json`).
 ```
 
 Copia en el tema: `assets/css/inap.css`, `parts/*`, el sprite de Lucide, logos y la fuente Montserrat.
-`assets/css/tema.css`, `assets/js/sitio.js` y `assets/js/admin-numeral.js` son propios del tema.
+`assets/css/tema.css`, `assets/js/sitio.js`, `assets/js/admin-numeral.js` y `assets/js/admin-ajustes.js` (selector de fotos de Medios) son propios del tema.
 
 ## Datos de Transparencia
 
