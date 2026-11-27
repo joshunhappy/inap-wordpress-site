@@ -20,9 +20,12 @@ get_header();
 ?>
 <main id="contenido" tabindex="-1" class="flex flex-col">
 
-  <section aria-labelledby="inicio-titulo" class="relative overflow-hidden">
-    <img src="<?php echo esc_url(get_theme_file_uri('assets/brand/waves-lines.svg')); ?>" alt="" width="1440" height="411"
-         class="pointer-events-none absolute top-1/2 left-1/2 h-[411px] w-[1440px] max-w-none -translate-x-1/2 -translate-y-1/2 lg:h-auto lg:w-full" />
+  <?php /* z-10 y las ondas en su propia capa recortada: la lista de sugerencias del buscador sale del hero. */ ?>
+  <section aria-labelledby="inicio-titulo" class="relative z-10">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <img src="<?php echo esc_url(get_theme_file_uri('assets/brand/waves-lines.svg')); ?>" alt="" width="1440" height="411"
+           class="absolute top-1/2 left-1/2 h-[411px] w-[1440px] max-w-none -translate-x-1/2 -translate-y-1/2 lg:h-auto lg:w-full" />
+    </div>
     <div class="relative mx-auto flex max-w-360 flex-col gap-6 px-4 pt-8 pb-12 lg:flex-row lg:items-center lg:gap-12 lg:px-30 lg:pt-18 lg:pb-20">
       <div class="flex flex-col gap-6 lg:min-w-0 lg:flex-1">
         <div class="flex flex-col gap-4 lg:gap-6">

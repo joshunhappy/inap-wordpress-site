@@ -179,6 +179,8 @@ function inap_cabecera(): string
         'secciones' => inap_tpl_lista($secciones),
         'movil_utilidad' => inap_tpl_lista(array_map(fn ($n, $k) => inap_tpl($k === $ultimo ? 'movil-utilidad-ultimo' : 'movil-utilidad', inap_menu_vars($n['item'])), $utilidad, array_keys($utilidad))),
     ]);
+    // El buscador de la barra de escritorio ya usa id="nav-q": el del menú de celular lleva otro.
+    $menu_movil = str_replace(['for="nav-q"', 'id="nav-q"'], ['for="movil-q"', 'id="movil-q"'], $menu_movil);
 
     return '<div class="sticky -top-9 z-40 hidden lg:block" data-barra>' . $escritorio
         . '<div class="absolute inset-x-0 top-full"><div class="mx-auto mt-2 max-w-360 px-20">' . implode('', $paneles) . '</div></div></div>'

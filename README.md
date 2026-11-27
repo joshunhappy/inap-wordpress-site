@@ -52,7 +52,7 @@ Pensado para Comunicación Social con el rol **Editor** (sin plugins):
 | Textos de /noticias/ y de cada noticia (pestañas, destacadas, compartir) | Noticias › Página de noticias (`inc/noticias.php`) |
 | Eventos (tipo `inap_evento`: fecha, hora, lugar) | Eventos |
 | Barra superior, mega menús, menú de celular, pie y redes | Apariencia › Menús (4 menús; la estructura está al inicio de `inc/menus.php`) |
-| Teléfono, correo y dirección generales; enlaces a la plataforma de cursos y al Aula virtual | Ajustes › INAP |
+| Teléfono, correo y dirección generales; enlaces a la plataforma de cursos y al Aula virtual; búsquedas populares del buscador | Ajustes › INAP |
 | Numerales del artículo 10: meses, apartados, enlaces de OneDrive, avisos | Transparencia › Numerales |
 | Textos de las páginas de Transparencia, año, datos de la Unidad de Información Pública | Transparencia › Textos y ajustes |
 
@@ -72,7 +72,7 @@ inicial de los menús (`parts/menus.json`).
 ```
 
 Copia en el tema: `assets/css/inap.css`, `parts/*`, el sprite de Lucide, logos y la fuente Montserrat.
-`assets/css/tema.css`, `assets/js/sitio.js`, `assets/js/admin-numeral.js` y `assets/js/admin-ajustes.js` (selector de fotos de Medios) son propios del tema.
+`assets/css/tema.css`, `assets/js/sitio.js`, `assets/js/buscador.js` (sugerencias del buscador; datos de `inc/buscador.php` y de `GET /wp-json/inap/v1/sugerencias?q=`), `assets/js/admin-numeral.js` y `assets/js/admin-ajustes.js` (selector de fotos de Medios) son propios del tema.
 
 ## Datos de Transparencia
 

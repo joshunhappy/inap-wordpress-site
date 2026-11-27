@@ -59,6 +59,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 8.5 [Campos del mega menú](#85-campos-del-mega-menú)
    - 8.6 [Pie de página y redes](#86-pie-de-página-y-redes)
 9. [Ajustes › INAP: contacto y enlaces](#9-ajustes--inap-contacto-y-enlaces)
+   - 9.1 [El buscador del sitio](#91-el-buscador-del-sitio)
 10. [Buenas prácticas al escribir](#10-buenas-prácticas-al-escribir)
 11. [Problemas frecuentes](#11-problemas-frecuentes)
 12. [Contenido de ejemplo y lo que todavía no está listo](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo)
@@ -82,6 +83,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 | Agregar un enlace a un menú | [8.2](#82-agregar-un-enlace) |
 | Cambiar el teléfono, el correo o la dirección | [9](#9-ajustes--inap-contacto-y-enlaces) |
 | Poner o quitar la franja amarilla de aviso | [9](#9-ajustes--inap-contacto-y-enlaces) |
+| Cambiar las búsquedas populares del buscador | [9.1](#91-el-buscador-del-sitio) |
 | Borrar el contenido de ejemplo | [12](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo) |
 
 ---
@@ -103,7 +105,7 @@ Entra a la dirección del sitio seguida de `/wp-admin` (por ejemplo `https://ina
 | Los meses y documentos de un numeral de Transparencia | **Transparencia › Numerales** | [5](#5-transparencia-publicar-cada-mes), [6](#6-transparencia-numerales-en-detalle) |
 | Los textos de las páginas de Transparencia, el año, el correo de la Unidad | **Transparencia › Textos y ajustes** | [7](#7-transparencia-textos-y-ajustes) |
 | Los enlaces de la barra superior, los mega menús, el pie o las redes sociales | **Apariencia › Menús** | [8](#8-menús-barra-mega-menús-pie-y-redes) |
-| El teléfono, correo y dirección del pie; los enlaces a la plataforma de cursos y al Aula virtual; la franja de aviso | **Ajustes › INAP** | [9](#9-ajustes--inap-contacto-y-enlaces) |
+| El teléfono, correo y dirección del pie; los enlaces a la plataforma de cursos y al Aula virtual; la franja de aviso; las búsquedas populares del buscador | **Ajustes › INAP** | [9](#9-ajustes--inap-contacto-y-enlaces) |
 
 ### 1.3 Qué no se edita desde el administrador
 
@@ -581,8 +583,32 @@ En **Ajustes › INAP**:
 | **Dirección de la plataforma de cursos** | «Iniciar sesión» lleva a esta dirección + `/login` y «Regístrate» a `/registro` |
 | **Aula virtual (Moodle)** | Enlace «Aula virtual» de la barra superior y del menú de celular. Abre en otra pestaña. |
 | **Texto del aviso** | Franja amarilla arriba de todas las páginas, por ejemplo para una versión de demostración. Vacío = sin aviso. |
+| **Búsquedas populares** | Botones de la lista del buscador ([9.1](#91-el-buscador-del-sitio)). Una por renglón, hasta 8. |
+| **Mostrar «¿Buscas cursos?»** | Enlace al final de la lista del buscador hacia la búsqueda de la plataforma de cursos ([9.1](#91-el-buscador-del-sitio)). |
 
 Los datos de la **Unidad de Información Pública** son distintos y se cambian en Transparencia › Textos y ajustes ([7](#7-transparencia-textos-y-ajustes)).
+
+### 9.1 El buscador del sitio
+
+Al tocar el buscador (en la barra, en el inicio o en el menú de celular) se abre una lista debajo.
+
+**Con el campo vacío:**
+
+| Grupo | De dónde sale |
+| --- | --- |
+| **Búsquedas recientes** | Las últimas 5 búsquedas de esa persona. Se guardan solo en su navegador: nadie más las ve y no se editan desde el administrador. Si no hay, el grupo no aparece. |
+| **Populares** | El campo **Búsquedas populares** de Ajustes › INAP, en el mismo orden. Cada botón busca ese texto. Elige búsquedas que den resultados. |
+| **Explora por sección** | Noticias (con el total de noticias publicadas) y Transparencia. Fijo. |
+| **¿Buscas cursos?** | Lleva a la búsqueda de la plataforma de cursos (dirección de la plataforma + `/busqueda`). Se oculta quitando la marca de **Mostrar «¿Buscas cursos?»**. |
+
+**Al escribir** (desde 2 letras), la lista cambia:
+
+- **Sugerencias:** hasta 3 frases para completar la búsqueda. Salen de las búsquedas populares, de los temas de las noticias y de los títulos de noticias, eventos, páginas y numerales que contienen lo escrito.
+- **Noticias y eventos:** hasta 2, con su fecha.
+- **Páginas:** hasta 2, incluidos los 29 numerales de Transparencia.
+- **Ver todos los resultados** abre la página de resultados, que también busca en el texto de las noticias y páginas, no solo en el título.
+
+No importan las mayúsculas ni los acentos: «etica» encuentra «Ética». Para que una noticia aparezca, su **título** debe tener las palabras que la gente busca.
 
 ---
 
@@ -619,6 +645,7 @@ Los datos de la **Unidad de Información Pública** son distintos y se cambian e
 | **Un enlace del menú no aparece** | Revisa su nivel (sangría): en el menú principal, un 4.º nivel no se muestra; en el pie, solo hay dos niveles. Pulsa **Guardar menú**. |
 | **El panel del mega menú sale vacío** | El elemento de 1.er nivel tiene hijos, pero sus columnas no tienen enlaces debajo. Agrega enlaces al 3.er nivel. |
 | **Borré un texto y salió otro** | Es el texto por defecto del diseño ([1.4](#14-reglas-para-todo-el-administrador)). Escribe el texto que quieras en el campo. |
+| **El buscador no sugiere una noticia** | La lista muestra solo 2 noticias o eventos; los demás están en **Ver todos los resultados**. Revisa que la noticia esté publicada y que su título use las palabras que se buscan ([9.1](#91-el-buscador-del-sitio)). |
 | **No veo el cambio en la página** | Recarga la página. Si el sitio usa caché, puede tardar unos minutos. |
 
 ---
@@ -644,7 +671,7 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 
 - **Formulario «Solicitud de información»:** revisa que los datos estén completos, pero **todavía no envía ni guarda la solicitud**. Falta acordar con la Unidad de Información Pública cómo se reciben (correo o sistema propio). Mientras tanto, el inicio de Transparencia muestra el correo de la Unidad.
 - **Páginas de Eventos y de un evento:** funcionan, pero con un diseño provisional y sencillo. Los diseños finales ya están en Figma y se construirán después ([4.4](#44-la-página-eventos-y-la-de-cada-evento)).
-- **Resultados de búsqueda y página «No encontramos esta página» (404):** funcionan con un diseño provisional. El buscador del sitio encuentra noticias, eventos y páginas; los numerales de Transparencia se buscan con **Buscar un numeral**, en Información pública de oficio.
+- **Página de resultados de búsqueda y página «No encontramos esta página» (404):** funcionan con un diseño provisional. La página de resultados muestra noticias, eventos y páginas; los numerales de Transparencia aparecen en la lista del buscador ([9.1](#91-el-buscador-del-sitio)) y en **Buscar un numeral**, en Información pública de oficio.
 - **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.
 - **Demás secciones del sitio** (Fortalecimiento, Recursos, Institución, Contacto): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.
