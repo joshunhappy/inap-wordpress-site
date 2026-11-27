@@ -175,9 +175,8 @@ function inap_evento_datos(WP_Post $p): array
         'url' => get_permalink($p),
         'iso' => $iso,
         'pasado' => $iso !== '' && $iso < wp_date('Y-m-d'),
-        // El inicio usa «07 DIC» (Figma del inicio); la página Eventos, «7 DIC».
-        'dia' => $d ? sprintf('%02d', $d) : '',
-        'dia_corto' => $d ? (string) $d : '',
+        // Día sin cero inicial («7 DIC») en el inicio y en Eventos.
+        'dia' => $d ? (string) $d : '',
         'mes' => $mes ? ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'][$mes - 1] : '',
         'mes_anio' => $mes ? ucfirst(INAP_MESES[$mes - 1]) . " {$a}" : '',
         'fecha_larga' => $mes ? sprintf('%d de %s de %d', $d, INAP_MESES[$mes - 1], $a) : '',
@@ -428,7 +427,7 @@ function inap_evento_fila(array $e, string $h = 'h3', bool $columnas = true, boo
         . ' has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-primary-text">'
         . '<div class="flex min-w-0 flex-1 items-center gap-4">'
         . '<span aria-hidden="true" class="flex h-15 w-14 shrink-0 flex-col items-center justify-center rounded-lg bg-surface-subtle py-2 text-center font-semibold text-primary-text">'
-        . '<span class="text-2xl">' . esc_html($e['dia_corto']) . '</span><span class="text-xs">' . esc_html($e['mes']) . '</span></span>'
+        . '<span class="text-2xl">' . esc_html($e['dia']) . '</span><span class="text-xs">' . esc_html($e['mes']) . '</span></span>'
         . '<div class="flex min-w-0 flex-1 flex-col gap-1">'
         . "<{$h} class=\"text-base leading-6 font-semibold text-base-content group-hover:text-primary-text\">"
         . '<a href="' . esc_url($e['url']) . '" class="after:absolute after:inset-0 focus-visible:outline-none">' . esc_html($e['titulo']) . '</a>'
