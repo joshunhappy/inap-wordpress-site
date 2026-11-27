@@ -145,6 +145,59 @@ function inap_noticia_tarjeta(array $n, string $tipo = 'vertical', string $h = '
         . '</div></article>';
 }
 
+/* ── Piezas compartidas con Eventos ───────────────────────────────────────── */
+
+/**
+ * Pestañas Noticias · Eventos · Multimedia (textos y direcciones en Noticias › Página de noticias).
+ * $actual: 'noticias' o 'eventos'. Una pestaña sin texto o sin dirección no se muestra.
+ */
+function inap_pestanas(string $actual): string
+{
+    $t = 'inap_noticias_txt';
+    $items = array_filter([
+        'noticias' => [$t('titulo'), get_permalink((int) get_option('page_for_posts')) ?: home_url('/noticias/')],
+        'eventos' => [$t('eventos_texto'), inap_url($t('eventos_url'))],
+        'multimedia' => [$t('multimedia_texto'), $t('multimedia_url') !== '' ? inap_url($t('multimedia_url')) : ''],
+    ], fn ($p) => $p[0] !== '' && $p[1] !== '');
+    if ($t('pestanas_mostrar') !== '1' || count($items) < 2) {
+        return '';
+    }
+    $html = '';
+    foreach ($items as $clave => [$texto, $url]) {
+        $html .= $clave === $actual
+            ? '<li><a href="' . esc_url($url) . '" aria-current="page" class="-mb-px block rounded-t-sm border-b-3 border-primary py-3 text-sm font-semibold whitespace-nowrap text-primary-text ' . INAP_FOCUS . '">' . esc_html($texto) . '</a></li>'
+            : '<li><a href="' . esc_url($url) . '" class="block rounded-t-sm py-3 text-sm font-medium whitespace-nowrap text-neutral-text hover:text-primary-text ' . INAP_FOCUS . '">' . esc_html($texto) . '</a></li>';
+    }
+    return '<nav aria-label="Secciones" class="border-b border-base-border"><ul class="flex gap-8 overflow-x-auto">' . $html . '</ul></nav>';
+}
+
+/** «Compartir:» Facebook, LinkedIn, X y «Copiar enlace» de la entrada actual (noticia o evento). */
+function inap_compartir(): string
+{
+    $t = 'inap_noticias_txt';
+    if ($t('compartir_mostrar') !== '1') {
+        return '';
+    }
+    $url = rawurlencode(get_permalink());
+    $texto = rawurlencode(html_entity_decode(get_the_title(), ENT_QUOTES, 'UTF-8'));
+    $nueva = '<span class="sr-only"> (se abre en una pestaña nueva)</span>';
+    $enlace = 'rounded-sm text-primary-text hover:underline ' . INAP_FOCUS;
+    $redes = '';
+    foreach ([
+        'Facebook' => "https://www.facebook.com/sharer/sharer.php?u={$url}",
+        'LinkedIn' => "https://www.linkedin.com/sharing/share-offsite/?url={$url}",
+        'X' => "https://x.com/intent/post?url={$url}&text={$texto}",
+    ] as $red => $href) {
+        $redes .= '<li><a href="' . esc_url($href) . '" target="_blank" rel="noopener" class="' . $enlace . '">' . esc_html($red) . $nueva . '</a></li>';
+    }
+    return '<div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-base-border pt-6 text-sm font-semibold">'
+        . '<p id="compartir" class="text-base-content">' . esc_html($t('compartir_texto')) . '</p>'
+        . '<ul aria-labelledby="compartir" class="flex flex-wrap items-center gap-x-4 gap-y-2">' . $redes
+        . '<li><button type="button" data-copiar="' . esc_url(get_permalink()) . '" class="cursor-pointer ' . $enlace . '">Copiar enlace</button>'
+        . '<span role="status" class="ms-2 font-normal text-neutral-text" data-copiado></span></li>'
+        . '</ul></div>';
+}
+
 /* ── Filtros y consulta de /noticias/ ─────────────────────────────────────── */
 
 /** Filtros de la URL: ?tema=slug&anio=2026&q=palabras. */

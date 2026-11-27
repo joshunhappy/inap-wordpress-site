@@ -37,6 +37,8 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 4.2 [Qué eventos se muestran](#42-qué-eventos-se-muestran)
    - 4.3 [Cambiar o quitar un evento](#43-cambiar-o-quitar-un-evento)
    - 4.4 [La página Eventos y la de cada evento](#44-la-página-eventos-y-la-de-cada-evento)
+   - 4.5 [Tipos de evento](#45-tipos-de-evento)
+   - 4.6 [Textos de la página Eventos](#46-textos-de-la-página-eventos)
 5. [Transparencia: publicar cada mes](#5-transparencia-publicar-cada-mes)
    - 5.1 [Copiar el enlace de la carpeta en OneDrive](#51-copiar-el-enlace-de-la-carpeta-en-onedrive)
    - 5.2 [Pegarlo en el numeral](#52-pegarlo-en-el-numeral)
@@ -76,6 +78,9 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 | Cambiar el título o la descripción de la página Noticias | [3.7](#37-textos-de-la-página-noticias) |
 | Quitar los enlaces para compartir una noticia | [3.8](#38-la-página-de-cada-noticia) |
 | Publicar un evento | [4.1](#41-publicar-un-evento) |
+| Poner el botón «Inscribirme» en un evento | [4.1](#41-publicar-un-evento) |
+| Agregar un tipo de evento (Foro, Taller…) | [4.5](#45-tipos-de-evento) |
+| Cambiar el título o la descripción de la página Eventos | [4.6](#46-textos-de-la-página-eventos) |
 | Cambiar una foto | [2.8](#28-fotos-e-íconos), [3.2](#32-foto-de-la-noticia) |
 | Ocultar una sección del inicio | [2.7](#27-ocultar-o-volver-a-mostrar-una-sección-o-tarjeta) |
 | Publicar el mes en Transparencia | [5](#5-transparencia-publicar-cada-mes) |
@@ -102,6 +107,8 @@ Entra a la dirección del sitio seguida de `/wp-admin` (por ejemplo `https://ina
 | Las noticias | **Noticias** | [3](#3-noticias) |
 | Los textos de la página Noticias y de cada noticia | **Noticias › Página de noticias** | [3.7](#37-textos-de-la-página-noticias) |
 | Los eventos | **Eventos** | [4](#4-eventos) |
+| Los tipos de evento (Foro, Taller…) | **Eventos › Tipos** | [4.5](#45-tipos-de-evento) |
+| Los textos de la página Eventos y de cada evento | **Eventos › Página de eventos** | [4.6](#46-textos-de-la-página-eventos) |
 | Los meses y documentos de un numeral de Transparencia | **Transparencia › Numerales** | [5](#5-transparencia-publicar-cada-mes), [6](#6-transparencia-numerales-en-detalle) |
 | Los textos de las páginas de Transparencia, el año, el correo de la Unidad | **Transparencia › Textos y ajustes** | [7](#7-transparencia-textos-y-ajustes) |
 | Los enlaces de la barra superior, los mega menús, el pie o las redes sociales | **Apariencia › Menús** | [8](#8-menús-barra-mega-menús-pie-y-redes) |
@@ -311,7 +318,7 @@ En **Noticias › Página de noticias**:
 | Sección | Qué se cambia |
 | --- | --- |
 | **Encabezado** | Título (también se usa en el breadcrumb y en «Regresar» del celular) y descripción. |
-| **Pestañas** | Texto y dirección de Eventos y Multimedia. Una pestaña sin dirección no se muestra; Multimedia está vacía hasta que exista esa sección. **Mostrar** oculta todas las pestañas. |
+| **Pestañas** | Texto y dirección de Eventos y Multimedia. Son las mismas pestañas de la página Eventos. Una pestaña sin dirección no se muestra; Multimedia está vacía hasta que exista esa sección. **Mostrar** oculta todas las pestañas. |
 | **Destacadas** | Título. Sin la marca **Mostrar**, todas las noticias van en la lista. |
 | **Todas las noticias** | Título, el texto junto al total («de la más reciente a la más antigua») y el mensaje cuando un filtro no encuentra nada. |
 | **Cada noticia** | Ver [3.8](#38-la-página-de-cada-noticia). |
@@ -324,7 +331,7 @@ Cada noticia tiene su página, en una columna de lectura. De arriba abajo: tema 
 
 - **Pie de la foto:** es la **Leyenda** de la foto en **Medios**. Escríbela con el crédito, por ejemplo «Participantes en la sesión inaugural. Foto: Comunicación Social». Sin leyenda, no hay pie.
 - **Cita destacada:** usa el bloque **Cita** del editor; escribe el nombre y cargo de la persona en la línea de abajo. Sale con una raya celeste a la izquierda.
-- **Compartir:** Facebook, LinkedIn, X y «Copiar enlace». En **Noticias › Página de noticias › Cada noticia** se cambia el texto «Compartir:» o se ocultan con la casilla **Mostrar «Compartir»**.
+- **Compartir:** Facebook, LinkedIn, X y «Copiar enlace». En **Noticias › Página de noticias › Cada noticia** se cambia el texto «Compartir:» o se ocultan con la casilla **Mostrar «Compartir»**. Vale también para la página de cada evento.
 - **Anterior y siguiente:** salen solas por fecha de publicación. Sus textos («Noticia anterior», «Noticia siguiente») se cambian en la misma sección.
 
 ---
@@ -336,24 +343,33 @@ Los eventos se escriben en **Eventos**. Salen en el inicio ([2.4](#24-noticias-y
 ### 4.1 Publicar un evento
 
 1. Ve a **Eventos › Agregar evento**.
-2. Escribe el **nombre del evento** arriba y, debajo, la descripción (programa, a quién va dirigido, cómo inscribirse).
-3. En el recuadro **Fecha y lugar**, a la derecha:
+2. Escribe el **nombre del evento** arriba y, debajo, el cuerpo: de qué trata, la agenda, a quién va dirigido. Usa **Encabezado** para títulos como «Agenda» y **Lista** para los horarios.
+3. En **Extracto**, una o dos oraciones. Es la entradilla que sale debajo del nombre en la página del evento.
+4. En el recuadro **Datos del evento**, debajo del editor:
 
    | Campo | Qué poner |
    | --- | --- |
    | **Fecha** | Obligatoria. El día del evento. |
-   | **Hora de inicio** | Opcional, por ejemplo `08:30`. |
-   | **Lugar** | Por ejemplo `Sede central, zona 10` o `Transmisión en vivo`. |
+   | **Hora de inicio** | Por ejemplo `08:30`. Vacía si el evento dura todo el día. |
+   | **Hora de fin** | Opcional. Con ella, la página dice «8:30 a 13:00». |
+   | **Modalidad** | Presencial, En línea o Presencial y en línea. La usa el filtro **Modalidad** y la frase junto al tipo («Evento presencial con transmisión en vivo»). |
+   | **Lugar (corto)** | Lo que se lee en las listas, junto a la hora: `Sede central, zona 10`, `En línea`. |
+   | **Lugar (completo)** | Opcional. La dirección completa para la página del evento. Si está vacío, se usa el corto. |
+   | **Transmisión** | Opcional. Por ejemplo `En vivo por Facebook y YouTube del INAP`. |
+   | **Costo** | Opcional. Por ejemplo `Gratuito, con inscripción previa (cupo de 200 personas)`. |
+   | **Enlace de inscripción** | Opcional. Dirección completa (`https://…`), normalmente la del curso o evento en la plataforma de cursos. Sin enlace no sale el botón **Inscribirme**. |
 
-4. Pulsa **Publicar**.
+5. En la caja **Tipos de evento** (a la derecha), marca **uno**: Foro, Conversatorio, Taller… ([4.5](#45-tipos-de-evento)).
+6. En **Foto del evento** (a la derecha), elige una foto horizontal. Su **Leyenda** en Medios es el pie de foto, como en las noticias ([3.8](#38-la-página-de-cada-noticia)).
+7. Pulsa **Publicar**.
 
-En el inicio se ve así: el día y el mes en un recuadro, el nombre y debajo «8:30 · Sede central, zona 10».
+Los campos opcionales vacíos no se muestran: si no hay costo, no sale la línea «Costo».
 
 ### 4.2 Qué eventos se muestran
 
-- El inicio muestra los **3 eventos más cercanos desde hoy**; la página Eventos, todos los próximos.
-- **Cuando la fecha pasa, el evento deja de aparecer solo.** No hace falta borrarlo.
-- Si no hay eventos próximos, el inicio muestra el **Texto cuando no hay eventos** ([2.4](#24-noticias-y-eventos-del-inicio)).
+- El inicio muestra los **3 eventos más cercanos desde hoy**. La página Eventos muestra todos los próximos y, debajo, los pasados.
+- **Cuando la fecha pasa, el evento se mueve solo a «Eventos pasados».** No hace falta borrarlo: queda como registro de lo que hizo el INAP. Su página sigue abierta, sin los botones, con el aviso «Este evento ya se realizó».
+- Si no hay eventos próximos, el inicio muestra el **Texto cuando no hay eventos** ([2.4](#24-noticias-y-eventos-del-inicio)) y la página Eventos, el suyo ([4.6](#46-textos-de-la-página-eventos)).
 - En **Eventos › Todos los eventos**, la columna **Fecha del evento** marca «(ya pasó)» en los eventos pasados.
 
 ### 4.3 Cambiar o quitar un evento
@@ -362,10 +378,45 @@ Igual que las noticias ([3.5](#35-cambiar-o-quitar-una-noticia)): abre el evento
 
 ### 4.4 La página Eventos y la de cada evento
 
-- **Eventos** (`/eventos/`): todos los próximos eventos, del más cercano al más lejano, 10 por página. Cada uno muestra su fecha, «hora · lugar» y el nombre, que lleva a la página del evento. Si no hay eventos próximos, muestra el mismo **Texto cuando no hay eventos** del inicio ([2.4](#24-noticias-y-eventos-del-inicio)).
-- **Cada evento** tiene su página con la fecha, la hora, el lugar, el nombre y la descripción que escribiste. Si le pones **Foto del evento** (panel derecho), sale debajo del nombre. El **Extracto**, si lo llenas, se ve en la página Eventos debajo del nombre.
+**Eventos** (`/eventos/`), de arriba abajo:
 
-Estas dos páginas tienen por ahora un diseño provisional ([12](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo)): el título «Próximos eventos» todavía no se puede cambiar desde el administrador.
+- Título, descripción y las pestañas **Noticias · Eventos · Multimedia** (las mismas de la página Noticias, [3.7](#37-textos-de-la-página-noticias)).
+- **Próximos eventos:** el total, los filtros y todos los eventos desde hoy, **agrupados por mes** («Diciembre 2026»), del más cercano al más lejano.
+- **Filtros:** **Tipo de evento** (solo los tipos con eventos), **Modalidad** (Presencial o En línea; los de «Presencial y en línea» salen con los dos) y **Buscar en eventos** (nombre y texto). Se aplican con **Filtrar** y valen para las dos listas; **Quitar filtros** vuelve a la lista completa.
+- **Eventos pasados:** del más reciente al más antiguo, 10 por página, con números de página. En las páginas 2 y siguientes ya no salen los próximos.
+- Cada fila: el día y el mes en un recuadro, el nombre, «hora · lugar» (los pasados, solo el lugar), y en computadora el tipo y «Ver evento». **Toda la fila lleva a la página del evento.**
+
+**Cada evento**, en una columna de lectura:
+
+- El tipo (lleva a la lista filtrada por ese tipo) y la modalidad, el nombre y el extracto.
+- Una tarjeta con **Fecha** (con el día de la semana), **Hora**, **Lugar**, **Transmisión** y **Costo**, y los botones:
+  - **Inscribirme:** abre el **Enlace de inscripción** del evento.
+  - **Agregar al calendario:** descarga el evento (archivo `.ics`) para Google Calendar, Outlook o el calendario del celular, con fecha, hora, lugar y enlace.
+- La foto con su pie, el cuerpo, **Compartir** (el mismo de las noticias, [3.8](#38-la-página-de-cada-noticia)) y **Otros próximos eventos**: los 3 siguientes y «Ver todos los eventos».
+
+### 4.5 Tipos de evento
+
+En **Eventos › Tipos** están los tipos: Foro, Conversatorio, Taller, Graduación, Presentación, Webinar, Lanzamiento, Encuentro y Transmisión (los del diseño).
+
+- **Agregar un tipo:** escribe el **Nombre** y pulsa **Agregar tipo**. También se puede agregar desde la caja **Tipos de evento** de un evento.
+- **Cambiar el nombre:** pasa el cursor sobre el tipo y pulsa **Edición rápida**. Cambia en todos sus eventos.
+- **Borrar un tipo** no borra sus eventos: se quedan sin tipo.
+- El filtro de la página Eventos solo lista los tipos que tienen al menos un evento publicado.
+- Marca **un solo tipo** por evento; si marcas varios, se usa el primero en orden alfabético.
+
+### 4.6 Textos de la página Eventos
+
+En **Eventos › Página de eventos**:
+
+| Sección | Qué se cambia |
+| --- | --- |
+| **Encabezado** | Título (también en el breadcrumb y en «Regresar» del celular) y descripción. |
+| **Próximos eventos** | Título, el texto junto al total («del más cercano al más lejano»), el mensaje cuando no hay eventos y el mensaje cuando los filtros no encuentran nada. |
+| **Eventos pasados** | Título y el texto junto al total. Sin la marca **Mostrar**, la página solo muestra los próximos. |
+| **Filas de la lista** | El texto «Ver evento» de la derecha. |
+| **Cada evento** | Los botones «Inscribirme» y «Agregar al calendario», el aviso de un evento que ya pasó, y «Otros próximos eventos» (título, enlace y su casilla **Mostrar**). |
+
+Las **pestañas** y **Compartir** se cambian en **Noticias › Página de noticias**, porque son los mismos en las dos páginas. Pulsa **Guardar cambios** y revisa con **Ver en el sitio**.
 
 ---
 
@@ -631,6 +682,8 @@ No importan las mayúsculas ni los acentos: «etica» encuentra «Ética». Para
 | --- | --- |
 | **No veo el menú «Página de inicio», «Noticias» o «Eventos»** | Tu usuario no tiene el rol Editor. Pídelo a quien administra el servidor. |
 | **Una sección del inicio desapareció** | Su casilla **Mostrar** está sin marca, o no hay contenido para mostrar (sin cursos visibles, sin noticias). Ver [2.7](#27-ocultar-o-volver-a-mostrar-una-sección-o-tarjeta). |
+| **Un evento no tiene el botón «Inscribirme»** | Le falta el **Enlace de inscripción**, o el evento ya pasó ([4.1](#41-publicar-un-evento)). |
+| **Un tipo nuevo no aparece en el filtro de Eventos** | El filtro solo lista tipos con al menos un evento publicado ([4.5](#45-tipos-de-evento)). |
 | **Un evento no sale en el inicio** | Le falta la **Fecha**, la fecha ya pasó, o hay 3 eventos más cercanos. Ver [4.2](#42-qué-eventos-se-muestran). |
 | **La noticia grande del inicio no es la que quiero** | Fija la noticia que quieres ([3.4](#34-elegir-la-noticia-principal-del-inicio)) o quita la marca de la que está fijada. |
 | **Una noticia sale sin foto** | Le falta la **Foto de la noticia** ([3.2](#32-foto-de-la-noticia)). |
@@ -659,7 +712,8 @@ Al instalar el tema, el sitio trae el contenido de los diseños para que se vea 
 | Qué | Dónde | Cómo reconocerlo |
 | --- | --- | --- |
 | 13 noticias | **Noticias** | Su texto empieza con «Noticia de ejemplo» o «Texto de ejemplo». Muévelas a la papelera ([3.5](#35-cambiar-o-quitar-una-noticia)). |
-| 3 eventos | **Eventos** | Su texto dice «Evento de ejemplo». Muévelos a la papelera ([4.3](#43-cambiar-o-quitar-un-evento)). |
+| 9 eventos (5 próximos y 4 pasados) | **Eventos** | Su texto dice «Evento de ejemplo» (el Foro, «Texto de ejemplo»). Muévelos a la papelera ([4.3](#43-cambiar-o-quitar-un-evento)). |
+| 9 tipos de evento | **Eventos › Tipos** | Son los del diseño. Borra o renombra los que el INAP no use ([4.5](#45-tipos-de-evento)). |
 | 4 fotos | **Medios** | Se llaman «Foto de ejemplo»; su leyenda también lo dice. Bórralas después de quitar las noticias. |
 | Textos, cursos, servicios y tarjetas del inicio | **Página de inicio** | Son los del diseño. Revisa cada pantalla ([2](#2-página-de-inicio)). |
 | Fotos de los cursos | **Página de inicio › Cursos destacados** | Mientras no elijas otra, se usa la foto de ejemplo ([2.8](#28-fotos-e-íconos)). |
@@ -670,7 +724,6 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 ### Lo que todavía no está listo
 
 - **Formulario «Solicitud de información»:** revisa que los datos estén completos, pero **todavía no envía ni guarda la solicitud**. Falta acordar con la Unidad de Información Pública cómo se reciben (correo o sistema propio). Mientras tanto, el inicio de Transparencia muestra el correo de la Unidad.
-- **Páginas de Eventos y de un evento:** funcionan, pero con un diseño provisional y sencillo. Los diseños finales ya están en Figma y se construirán después ([4.4](#44-la-página-eventos-y-la-de-cada-evento)).
 - **Página de resultados de búsqueda y página «No encontramos esta página» (404):** funcionan con un diseño provisional. La página de resultados muestra noticias, eventos y páginas; los numerales de Transparencia aparecen en la lista del buscador ([9.1](#91-el-buscador-del-sitio)) y en **Buscar un numeral**, en Información pública de oficio.
 - **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.

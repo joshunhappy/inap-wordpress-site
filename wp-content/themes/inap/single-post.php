@@ -12,15 +12,6 @@ $lista = get_permalink((int) get_option('page_for_posts')) ?: home_url('/noticia
 $pie = $n['imagen_id'] ? (string) wp_get_attachment_caption($n['imagen_id']) : '';
 $anterior = get_previous_post();
 $siguiente = get_next_post();
-$url = rawurlencode(get_permalink());
-$texto = rawurlencode(get_the_title());
-$nueva = '<span class="sr-only"> (se abre en una pestaña nueva)</span>';
-$compartir = [
-    'Facebook' => "https://www.facebook.com/sharer/sharer.php?u={$url}",
-    'LinkedIn' => "https://www.linkedin.com/sharing/share-offsite/?url={$url}",
-    'X' => "https://x.com/intent/post?url={$url}&text={$texto}",
-];
-$enlace = 'rounded-sm text-primary-text hover:underline ' . INAP_FOCUS;
 
 inap_breadcrumb([['Inicio', home_url('/')], [$t('titulo'), $lista], [$n['titulo'], null]]);
 inap_back_link($t('titulo'), $lista);
@@ -51,20 +42,7 @@ inap_back_link($t('titulo'), $lista);
 
     <div class="inap-texto"><?php the_content(); ?></div>
 
-    <?php if ($t('compartir_mostrar') === '1') : ?>
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-base-border pt-6 text-sm font-semibold">
-        <p id="compartir" class="text-base-content"><?php echo esc_html($t('compartir_texto')); ?></p>
-        <ul aria-labelledby="compartir" class="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <?php foreach ($compartir as $red => $href) : ?>
-            <li><a href="<?php echo esc_url($href); ?>" target="_blank" rel="noopener" class="<?php echo $enlace; ?>"><?php echo esc_html($red) . $nueva; ?></a></li>
-          <?php endforeach; ?>
-          <li>
-            <button type="button" data-copiar="<?php echo esc_url(get_permalink()); ?>" class="cursor-pointer <?php echo $enlace; ?>">Copiar enlace</button>
-            <span role="status" class="ms-2 font-normal text-neutral-text" data-copiado></span>
-          </li>
-        </ul>
-      </div>
-    <?php endif; ?>
+    <?php echo inap_compartir(); ?>
 
     <?php if ($anterior || $siguiente) : ?>
       <nav aria-label="Otras noticias" class="flex flex-col gap-4 pt-4 sm:flex-row sm:justify-between sm:gap-8">

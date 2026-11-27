@@ -13,11 +13,6 @@ $f = inap_noticias_filtros();
 $pagina = max(1, (int) get_query_var('paged'));
 $destacadas = inap_noticias_muestra_destacadas() && $pagina === 1 ? inap_noticias_destacadas() : [];
 $total = (int) $wp_query->found_posts;
-$pestanas = array_filter([
-    [$t('eventos_texto'), $t('eventos_url')],
-    [$t('multimedia_texto'), $t('multimedia_url')],
-], fn ($p) => $p[0] !== '' && $p[1] !== '');
-
 inap_breadcrumb([['Inicio', home_url('/')], [$titulo, null]]);
 inap_back_link('Inicio', home_url('/'));
 ?>
@@ -29,16 +24,7 @@ inap_back_link('Inicio', home_url('/'));
     <?php endif; ?>
   </header>
 
-  <?php if ($t('pestanas_mostrar') === '1' && $pestanas) : ?>
-    <nav aria-label="Secciones" class="border-b border-base-border">
-      <ul class="flex gap-8 overflow-x-auto">
-        <li><a href="<?php echo esc_url($base); ?>" aria-current="page" class="-mb-px block rounded-t-sm border-b-3 border-primary py-3 text-sm font-semibold whitespace-nowrap text-primary-text <?php echo INAP_FOCUS; ?>"><?php echo esc_html($titulo); ?></a></li>
-        <?php foreach ($pestanas as [$texto, $url]) : ?>
-          <li><a href="<?php echo esc_url(inap_url($url)); ?>" class="block rounded-t-sm py-3 text-sm font-medium whitespace-nowrap text-neutral-text hover:text-primary-text <?php echo INAP_FOCUS; ?>"><?php echo esc_html($texto); ?></a></li>
-        <?php endforeach; ?>
-      </ul>
-    </nav>
-  <?php endif; ?>
+  <?php echo inap_pestanas('noticias'); ?>
 
   <?php if ($destacadas) :
     $principal = array_shift($destacadas);

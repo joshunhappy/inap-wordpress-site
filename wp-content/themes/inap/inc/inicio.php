@@ -8,14 +8,13 @@
  *   Página de inicio › Fortalecimiento    banda azul con sus 3 servicios
  *   Página de inicio › Recursos           3 tarjetas
  *   Noticias                              las entradas de WordPress, con otro nombre
- *   Eventos                               tipo de contenido propio, con fecha, hora y lugar
+ *   Eventos                               tipo de contenido propio (inc/eventos.php)
  *
  * Todo lo del inicio se edita aquí; front-page.php solo lo muestra.
  */
 
 defined('ABSPATH') || exit;
 
-const INAP_EVENTO = 'inap_evento';
 const INAP_PLATAFORMA = 'https://sigo.inap.gob.gt/frontend/webinap';
 
 /* ── Campos de las páginas del inicio ─────────────────────────────────────── */
@@ -287,23 +286,6 @@ function inap_inicio_eventos(int $cuantos = 3): array
     return array_map('inap_evento_datos', $posts);
 }
 
-function inap_evento_datos(WP_Post $p): array
-{
-    $iso = (string) get_post_meta($p->ID, '_inap_fecha', true);
-    [$a, $m, $d] = array_map('intval', explode('-', $iso . '--')) + [0, 0, 0];
-    $hora = (string) get_post_meta($p->ID, '_inap_hora', true);
-    $lugar = (string) get_post_meta($p->ID, '_inap_lugar', true);
-    return [
-        'titulo' => get_the_title($p),
-        'url' => get_permalink($p),
-        'iso' => $iso,
-        'dia' => $d ? sprintf('%02d', $d) : '',
-        'mes' => $m ? ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'][$m - 1] : '',
-        'fecha_larga' => $m ? sprintf('%d de %s de %d', $d, INAP_MESES[$m - 1], $a) : '',
-        'meta' => implode(' · ', array_filter([$hora !== '' ? ltrim($hora, '0') : '', $lugar])),
-    ];
-}
-
 /* ── Noticias = entradas de WordPress ─────────────────────────────────────── */
 
 add_filter('post_type_labels_post', function ($l) {
@@ -331,94 +313,6 @@ add_filter('taxonomy_labels_category', function ($l) {
 });
 
 add_action('after_setup_theme', fn () => add_theme_support('post-thumbnails'));
-
-/* ── Eventos ──────────────────────────────────────────────────────────────── */
-
-add_action('init', function () {
-    register_post_type(INAP_EVENTO, [
-        'labels' => [
-            'name' => 'Eventos',
-            'singular_name' => 'Evento',
-            'menu_name' => 'Eventos',
-            'all_items' => 'Todos los eventos',
-            'add_new' => 'Agregar evento',
-            'add_new_item' => 'Agregar evento',
-            'edit_item' => 'Editar evento',
-            'view_item' => 'Ver evento',
-            'search_items' => 'Buscar eventos',
-            'not_found' => 'No hay eventos.',
-            'item_published' => 'Evento publicado.',
-            'item_updated' => 'Evento actualizado.',
-            'featured_image' => 'Foto del evento',
-            'set_featured_image' => 'Elegir foto',
-        ],
-        'public' => true,
-        'has_archive' => 'eventos',
-        'rewrite' => ['slug' => 'eventos', 'with_front' => false],
-        'show_in_rest' => false,
-        'menu_position' => 6,
-        'menu_icon' => 'dashicons-calendar-alt',
-        'capability_type' => 'post',
-        'map_meta_cap' => true,
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
-    ]);
-});
-
-add_filter('enter_title_here', fn ($t, $post) => $post->post_type === INAP_EVENTO ? 'Nombre del evento' : $t, 10, 2);
-
-add_action('add_meta_boxes_' . INAP_EVENTO, function () {
-    add_meta_box('inap-evento', 'Fecha y lugar', function (WP_Post $post) {
-        wp_nonce_field('inap_evento', '_inap_evento');
-        $v = fn ($k) => esc_attr((string) get_post_meta($post->ID, "_inap_{$k}", true));
-        ?>
-        <p><label for="inap-fecha"><strong>Fecha</strong> (obligatoria)</label><br />
-          <input id="inap-fecha" name="inap_fecha" type="date" value="<?php echo $v('fecha'); ?>" required /></p>
-        <p><label for="inap-hora"><strong>Hora de inicio</strong></label><br />
-          <input id="inap-hora" name="inap_hora" type="time" value="<?php echo $v('hora'); ?>" /></p>
-        <p><label for="inap-lugar"><strong>Lugar</strong></label><br />
-          <input id="inap-lugar" name="inap_lugar" type="text" class="widefat" value="<?php echo $v('lugar'); ?>" aria-describedby="inap-lugar-ayuda" />
-          <span id="inap-lugar-ayuda" class="description">Por ejemplo: Sede central, zona 10 · Transmisión en vivo.</span></p>
-        <p class="description">El inicio muestra los 3 eventos más cercanos desde hoy. Cuando la fecha pasa, el evento deja de aparecer solo.</p>
-        <?php
-    }, INAP_EVENTO, 'side', 'high');
-});
-
-add_action('save_post_' . INAP_EVENTO, function ($post_id) {
-    if (!wp_verify_nonce($_POST['_inap_evento'] ?? '', 'inap_evento') || !current_user_can('edit_post', $post_id) || wp_is_post_autosave($post_id)) {
-        return;
-    }
-    $fecha = sanitize_text_field(wp_unslash($_POST['inap_fecha'] ?? ''));
-    $hora = sanitize_text_field(wp_unslash($_POST['inap_hora'] ?? ''));
-    update_post_meta($post_id, '_inap_fecha', preg_match('/^\d{4}-\d{2}-\d{2}$/', $fecha) ? $fecha : '');
-    update_post_meta($post_id, '_inap_hora', preg_match('/^\d{2}:\d{2}$/', $hora) ? $hora : '');
-    update_post_meta($post_id, '_inap_lugar', sanitize_text_field(wp_unslash($_POST['inap_lugar'] ?? '')));
-});
-
-add_filter('manage_' . INAP_EVENTO . '_posts_columns', fn ($cols) => array_slice($cols, 0, 2, true) + ['inap_fecha' => 'Fecha del evento', 'inap_lugar' => 'Lugar'] + array_slice($cols, 2, null, true));
-
-add_action('manage_' . INAP_EVENTO . '_posts_custom_column', function ($col, $post_id) {
-    $e = inap_evento_datos(get_post($post_id));
-    echo esc_html(match ($col) {
-        'inap_fecha' => $e['fecha_larga'] ? $e['fecha_larga'] . ($e['iso'] < wp_date('Y-m-d') ? ' (ya pasó)' : '') : '— sin fecha —',
-        'inap_lugar' => $e['meta'],
-        default => '',
-    });
-}, 10, 2);
-
-/* Lista del administrador: por fecha del evento, el más lejano arriba. Archivo público: solo los próximos. */
-add_action('pre_get_posts', function (WP_Query $q) {
-    if (is_admin() && $q->is_main_query() && $q->get('post_type') === INAP_EVENTO && !$q->get('orderby')) {
-        $q->set('meta_key', '_inap_fecha');
-        $q->set('orderby', 'meta_value');
-        $q->set('order', 'DESC');
-    }
-    if (!is_admin() && $q->is_main_query() && $q->is_post_type_archive(INAP_EVENTO)) {
-        $q->set('meta_key', '_inap_fecha');
-        $q->set('orderby', 'meta_value');
-        $q->set('order', 'ASC');
-        $q->set('meta_query', [['key' => '_inap_fecha', 'value' => wp_date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE']]);
-    }
-});
 
 /* ── Contenido inicial ────────────────────────────────────────────────────── */
 
