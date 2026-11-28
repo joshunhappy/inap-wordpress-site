@@ -63,6 +63,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 9. [Ajustes › INAP: contacto y enlaces](#9-ajustes--inap-contacto-y-enlaces)
    - 9.1 [El buscador del sitio](#91-el-buscador-del-sitio)
    - 9.2 [La página «No encontramos esta página» (404)](#92-la-página-no-encontramos-esta-página-404)
+   - 9.3 [Página de contacto y mensajes](#93-página-de-contacto-y-mensajes)
 10. [Buenas prácticas al escribir](#10-buenas-prácticas-al-escribir)
 11. [Problemas frecuentes](#11-problemas-frecuentes)
 12. [Contenido de ejemplo y lo que todavía no está listo](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo)
@@ -91,6 +92,8 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 | Poner o quitar la franja amarilla de aviso | [9](#9-ajustes--inap-contacto-y-enlaces) |
 | Cambiar las búsquedas populares del buscador | [9.1](#91-el-buscador-del-sitio) |
 | Cambiar los textos o enlaces de la página 404 | [9.2](#92-la-página-no-encontramos-esta-página-404) |
+| Leer los mensajes del formulario de contacto | [9.3](#93-página-de-contacto-y-mensajes) |
+| Cambiar los temas o el correo que recibe los mensajes de contacto | [9.3](#93-página-de-contacto-y-mensajes) |
 | Borrar el contenido de ejemplo | [12](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo) |
 
 ---
@@ -113,6 +116,8 @@ Entra a la dirección del sitio seguida de `/wp-admin` (por ejemplo `https://ina
 | Los textos de la página Eventos y de cada evento | **Eventos › Página de eventos** | [4.6](#46-textos-de-la-página-eventos) |
 | Los meses y documentos de un numeral de Transparencia | **Transparencia › Numerales** | [5](#5-transparencia-publicar-cada-mes), [6](#6-transparencia-numerales-en-detalle) |
 | Los textos de las páginas de Transparencia, el año, el correo de la Unidad | **Transparencia › Textos y ajustes** | [7](#7-transparencia-textos-y-ajustes) |
+| Los mensajes que llegan por el formulario de contacto | **Contacto › Mensajes** | [9.3](#93-página-de-contacto-y-mensajes) |
+| Los textos de la página Contacto, los temas del formulario y el correo que recibe los mensajes | **Contacto › Página de contacto** | [9.3](#93-página-de-contacto-y-mensajes) |
 | Los enlaces de la barra superior, los mega menús, el pie o las redes sociales | **Apariencia › Menús** | [8](#8-menús-barra-mega-menús-pie-y-redes) |
 | El teléfono, correo y dirección del pie; los enlaces a la plataforma de cursos y al Aula virtual; la franja de aviso; las búsquedas populares del buscador | **Ajustes › INAP** | [9](#9-ajustes--inap-contacto-y-enlaces) |
 
@@ -631,9 +636,9 @@ En **Ajustes › INAP**:
 
 | Campo | Dónde se usa |
 | --- | --- |
-| **Teléfono** | Pie y columna «Contacto» del mega menú. Escríbelo como se lee, ej. `(+502) 2419-8181`; el enlace para llamar desde el celular se arma solo. |
-| **Correo** | Pie y columna «Contacto» |
-| **Dirección** | Pie (cada línea en un renglón) y columna «Contacto» (en una sola línea) |
+| **Teléfono** | Pie, columna «Contacto» del mega menú y página Contacto ([9.3](#93-página-de-contacto-y-mensajes)). Escríbelo como se lee, ej. `(+502) 2419-8181`; el enlace para llamar desde el celular se arma solo. |
+| **Correo** | Pie, columna «Contacto» y página Contacto |
+| **Dirección** | Pie (cada línea en un renglón), columna «Contacto» y página Contacto (en una sola línea) |
 | **Dirección de la plataforma de cursos** | «Iniciar sesión» lleva a esta dirección + `/login` y «Regístrate» a `/registro` |
 | **Aula virtual (Moodle)** | Enlace «Aula virtual» de la barra superior y del menú de celular. Abre en otra pestaña. |
 | **Texto del aviso** | Franja amarilla arriba de todas las páginas, por ejemplo para una versión de demostración. Vacío = sin aviso. |
@@ -681,7 +686,41 @@ Sale cuando alguien abre una dirección que no existe (un enlace viejo, una dire
 
 **Enlaces:** en **Apariencia › Menús**, menú **Enlaces útiles (página 404)** (se agregan y ordenan como en [8.2](#82-agregar-un-enlace)). Salen en dos columnas en computadora, leyendo de izquierda a derecha, y en una columna en celular. Solo se usa el 1.er nivel. Recomendado: 4 a 8 enlaces a las secciones más visitadas. Si el menú queda vacío, la sección no aparece.
 
-> «Contacto» lleva a `#` hasta que exista la página de contacto: cámbialo entonces en este menú y en la Barra superior.
+### 9.3 Página de contacto y mensajes
+
+La página **Contacto** (`/contacto/`) tiene los datos de contacto, una tarjeta hacia Transparencia para las solicitudes de información pública, dos tarjetas (Preguntas frecuentes y Nuestras delegaciones) y el formulario **Envíanos un mensaje**. Los enlaces «Contacto» de la barra superior, «Contáctanos» del pie y «Contacto» de la página 404 llevan a ella.
+
+**Los mensajes.** Cada mensaje enviado:
+
+1. Se guarda en **Contacto › Mensajes**, con el tema, el nombre, el correo, el teléfono, la institución y el mensaje. Ábrelo para leerlo completo.
+2. Se envía por correo al buzón de su tema o, si el tema no tiene buzón propio, al **Correo que recibe los mensajes**. Al pulsar **Responder** en tu correo, la respuesta va directo a la persona.
+
+La columna **Aviso por correo** de la lista dice si la copia por correo salió. Si dice **No se pudo enviar**, el mensaje igual está guardado: respóndelo desde tu correo y avisa a quien administra el servidor, porque el sitio no está enviando correos.
+
+Los mensajes tienen datos personales: cuando ya los respondiste y no los necesitas, envíalos a la **Papelera** (pasa el cursor sobre el mensaje en la lista). Los mensajes no se pueden crear ni editar desde el administrador.
+
+**Textos y temas:** en **Contacto › Página de contacto**.
+
+| Sección | Qué se edita |
+| --- | --- |
+| **Encabezado** | Título, descripción, los dos datos con ✓ («Respuesta por correo», «Sin registrarte») y el **Horario de atención**, que también sale en «Datos de contacto». |
+| **Tarjeta «¿Buscas información pública?»** | Título, texto y botón. Lleva a Transparencia. Se oculta quitando la marca de **Mostrar**. |
+| **Datos de contacto** | Solo el título. El correo, teléfono y dirección salen de **Ajustes › INAP** ([9](#9-ajustes--inap-contacto-y-enlaces)). |
+| **Tarjetas de abajo** | Título, texto, línea de abajo y dirección de cada tarjeta. Una tarjeta sin dirección no sale. |
+| **Formulario** | Título, texto, **Temas**, **Correo que recibe los mensajes** y el aviso que ve la persona al enviar. |
+
+**Temas:** uno por renglón, en el orden en que salen en la lista «Tema». Para que un tema llegue a otro buzón, escribe el correo después de una barra vertical:
+
+```
+Cursos e inscripciones
+Aula virtual | aula@inap.gob.gt
+Servicios para instituciones | fortalecimiento@inap.gob.gt
+Otro tema
+```
+
+Los temas sin correo llegan al **Correo que recibe los mensajes**.
+
+> Protección contra envíos automáticos: el formulario descarta los mensajes de robots y acepta hasta 5 mensajes cada 10 minutos desde la misma conexión.
 
 ---
 
@@ -721,6 +760,7 @@ Sale cuando alguien abre una dirección que no existe (un enlace viejo, una dire
 | **El panel del mega menú sale vacío** | El elemento de 1.er nivel tiene hijos, pero sus columnas no tienen enlaces debajo. Agrega enlaces al 3.er nivel. |
 | **Borré un texto y salió otro** | Es el texto por defecto del diseño ([1.4](#14-reglas-para-todo-el-administrador)). Escribe el texto que quieras en el campo. |
 | **El buscador no sugiere una noticia** | La lista muestra solo 2 noticias o eventos; los demás están en **Ver todos los resultados**. Revisa que la noticia esté publicada y que su título use las palabras que se buscan ([9.1](#91-el-buscador-del-sitio)). |
+| **No llegan los mensajes de contacto al correo** | Están guardados en **Contacto › Mensajes**. Revisa la columna **Aviso por correo**: si dice «No se pudo enviar», el servidor no está enviando correos; avisa a quien lo administra. Revisa también la carpeta de correo no deseado y el correo del tema ([9.3](#93-página-de-contacto-y-mensajes)). |
 | **No veo el cambio en la página** | Recarga la página. Si el sitio usa caché, puede tardar unos minutos. |
 
 ---
@@ -740,6 +780,7 @@ Al instalar el tema, el sitio trae el contenido de los diseños para que se vea 
 | Textos, cursos, servicios y tarjetas del inicio | **Página de inicio** | Son los del diseño. Revisa cada pantalla ([2](#2-página-de-inicio)). |
 | Fotos de los cursos | **Página de inicio › Cursos destacados** | Mientras no elijas otra, se usa la foto de ejemplo ([2.8](#28-fotos-e-íconos)). |
 | Filas de los 29 numerales | **Transparencia › Numerales** | Fechas inventadas y enlaces vacíos ([5](#5-transparencia-publicar-cada-mes)). |
+| Horario de atención y temas del formulario de contacto | **Contacto › Página de contacto** | El horario «Lunes a viernes, de 8:00 a 16:30» y los 5 temas son provisionales. Confírmalos ([9.3](#93-página-de-contacto-y-mensajes)). |
 
 Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la lista, elige **Mover a la papelera** en **Acciones en lote** y pulsa **Aplicar**.
 
@@ -749,4 +790,4 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 - **Página de resultados de búsqueda:** funciona con un diseño provisional. Muestra noticias, eventos y páginas; los numerales de Transparencia aparecen en la lista del buscador ([9.1](#91-el-buscador-del-sitio)) y en **Buscar un numeral**, en Información pública de oficio.
 - **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.
-- **Demás secciones del sitio** (Fortalecimiento, Recursos, Institución, Contacto): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.
+- **Demás secciones del sitio** (Formación, Fortalecimiento, Recursos, Institución, Preguntas frecuentes y Nuestras delegaciones): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.

@@ -313,6 +313,7 @@ function inap_semilla_menus(): void
         'Transparencia' => home_url('/transparencia/'),
         'Noticias', 'Noticias INAP' => home_url('/noticias/'),
         'Eventos' => home_url('/eventos/'),
+        'Contacto', 'Contáctanos' => home_url('/contacto/'),
         default => '#',
     };
     $agregar = function (int $menu, string $titulo, int $padre = 0, array $extra = []) use ($url): int {

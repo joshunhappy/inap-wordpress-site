@@ -22,6 +22,7 @@ Páginas:
 | `/{noticia}/` | Sitio institucional · Noticia (`single-post.php`) |
 | `/eventos/` (`?tipo=`, `?modalidad=`, `?q=`) | Sitio institucional · Eventos (`archive-inap_evento.php`) |
 | `/eventos/{evento}/` (`?calendario=1` = archivo .ics) | Sitio institucional · Evento (`single-inap_evento.php`) |
+| `/contacto/` | Sitio institucional · Contacto (`templates/contacto.php`, `inc/contacto.php`; mensajes en Contacto › Mensajes + wp_mail) |
 | Dirección que no existe (404) | Sitio institucional · 404 (`404.php`; textos en Ajustes › INAP, enlaces en el menú «Enlaces útiles (página 404)») |
 | `/?s=…` | Sin diseño aún: lista provisional (`index.php`) |
 | `/transparencia/` | Transparencia · Inicio · Formulario |
@@ -53,6 +54,7 @@ Pensado para Comunicación Social con el rol **Editor** (sin plugins):
 | Textos, botones, cursos destacados, servicios y tarjetas del inicio | Página de inicio › Portada, Cursos destacados, Noticias y eventos, Fortalecimiento, Recursos (`inc/inicio.php`) |
 | Noticias (entradas con otro nombre; temas = categorías) | Noticias |
 | Textos de /noticias/ y de cada noticia (pestañas, destacadas, compartir) | Noticias › Página de noticias (`inc/noticias.php`) |
+| Mensajes del formulario de contacto; textos, temas y destinatario de /contacto/ | Contacto › Mensajes / Contacto › Página de contacto (`inc/contacto.php`) |
 | Eventos (tipo `inap_evento`: fecha, horas, modalidad, lugar, transmisión, costo, inscripción; `inc/eventos.php`) | Eventos |
 | Tipos de evento (taxonomía `inap_tipo_evento`) | Eventos › Tipos |
 | Textos de /eventos/ y de cada evento | Eventos › Página de eventos (`inc/eventos.php`) |

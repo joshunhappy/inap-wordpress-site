@@ -19,32 +19,8 @@ $secciones = [
     ['Rendición de cuentas', $t('rendicion_descripcion'), $t('rendicion_meta'), $t('rendicion_url') ?: '#'],
 ];
 
-/** Campo de texto con etiqueta (componente Field). */
-$campo = function (string $id, string $label, array $o = []) use ($err, $previo) {
-    $tipo = $o['type'] ?? 'text';
-    $valor = (string) ($previo[$id] ?? '');
-    $ayuda = $o['ayuda'] ?? '';
-    $error = $err($id) ? ($o['error'] ?? '') : '';
-    $desc = trim(($ayuda ? "{$id}-ayuda " : '') . ($error ? "{$id}-error" : ''));
-    $attrs = sprintf(
-        'id="%1$s" name="%1$s"%2$s%3$s%4$s%5$s',
-        esc_attr($id),
-        !empty($o['required']) ? ' required' : '',
-        !empty($o['autocomplete']) ? ' autocomplete="' . esc_attr($o['autocomplete']) . '"' : '',
-        !empty($o['placeholder']) ? ' placeholder="' . esc_attr($o['placeholder']) . '"' : '',
-        ($desc ? ' aria-describedby="' . esc_attr($desc) . '"' : '') . ($error ? ' aria-invalid="true"' : '')
-    );
-    $valor_attr = $valor !== '' ? ' value="' . esc_attr($valor) . '"' : '';
-    $control = match ($tipo) {
-        'textarea' => "<textarea {$attrs} rows=\"4\" class=\"textarea w-full" . ($error ? ' textarea-error' : '') . '">' . esc_textarea($valor) . '</textarea>',
-        'select' => "<select {$attrs} class=\"select w-full\"><option value=\"\">Selecciona una opción</option>" . implode('', array_map(fn ($v) => '<option' . selected($v, $valor, false) . '>' . esc_html($v) . '</option>', $o['options'])) . '</select>',
-        default => "<input type=\"{$tipo}\" {$attrs} class=\"input w-full" . ($error ? ' input-error' : '') . "\"{$valor_attr} />",
-    };
-    return '<fieldset class="fieldset min-w-0 flex-1 p-0"><label class="fieldset-legend" for="' . esc_attr($id) . '">' . esc_html($label) . '</label>' . $control
-        . ($ayuda ? '<p id="' . esc_attr($id) . '-ayuda" class="label whitespace-normal text-base-content/60">' . esc_html($ayuda) . '</p>' : '')
-        . ($error ? '<p id="' . esc_attr($id) . '-error" class="label whitespace-normal text-error-text">' . esc_html($error) . '</p>' : '')
-        . '</fieldset>';
-};
+/** Campo con etiqueta (componente Field): inap_campo() con lo escrito antes y el error, si lo hay. */
+$campo = fn (string $id, string $label, array $o = []) => inap_campo($id, $label, $o, (string) ($previo[$id] ?? ''), $err($id) ? ($o['error'] ?? '') : '');
 
 get_header();
 inap_breadcrumb([['Inicio', home_url('/')], ['Transparencia', null]]);
