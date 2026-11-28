@@ -5,7 +5,7 @@
 
 defined('ABSPATH') || exit;
 
-const INAP_VERSION = '0.8.0';
+const INAP_VERSION = '0.9.0';
 
 require_once __DIR__ . '/inc/ajustes.php';
 require_once __DIR__ . '/inc/menus.php';
@@ -13,6 +13,7 @@ require_once __DIR__ . '/inc/eventos.php';
 require_once __DIR__ . '/inc/inicio.php';
 require_once __DIR__ . '/inc/noticias.php';
 require_once __DIR__ . '/inc/buscador.php';
+require_once __DIR__ . '/inc/busqueda.php';
 require_once __DIR__ . '/inc/contacto.php';
 require_once __DIR__ . '/inc/transparencia-admin.php';
 require_once __DIR__ . '/inc/transparencia.php';

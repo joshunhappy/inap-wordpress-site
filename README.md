@@ -24,7 +24,7 @@ Páginas:
 | `/eventos/{evento}/` (`?calendario=1` = archivo .ics) | Sitio institucional · Evento (`single-inap_evento.php`) |
 | `/contacto/` | Sitio institucional · Contacto (`templates/contacto.php`, `inc/contacto.php`; mensajes en Contacto › Mensajes + wp_mail) |
 | Dirección que no existe (404) | Sitio institucional · 404 (`404.php`; textos en Ajustes › INAP, enlaces en el menú «Enlaces útiles (página 404)») |
-| `/?s=…` | Sin diseño aún: lista provisional (`index.php`) |
+| `/?s=…` (`&tipo=post\|inap_evento\|page`) | Sitio institucional · Búsqueda (`search.php`, `inc/busqueda.php`; textos en Ajustes › INAP) |
 | `/transparencia/` | Transparencia · Inicio · Formulario |
 | `/transparencia/informacion-publica-de-oficio/` | Información pública de oficio |
 | `/transparencia/articulo-10/8-informes-de-ejecucion-presupuestaria/` | Numeral (meses; `?meses` lo abre) |

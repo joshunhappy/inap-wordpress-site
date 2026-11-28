@@ -64,6 +64,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 9.1 [El buscador del sitio](#91-el-buscador-del-sitio)
    - 9.2 [La página «No encontramos esta página» (404)](#92-la-página-no-encontramos-esta-página-404)
    - 9.3 [Página de contacto y mensajes](#93-página-de-contacto-y-mensajes)
+   - 9.4 [Página de resultados de búsqueda](#94-página-de-resultados-de-búsqueda)
 10. [Buenas prácticas al escribir](#10-buenas-prácticas-al-escribir)
 11. [Problemas frecuentes](#11-problemas-frecuentes)
 12. [Contenido de ejemplo y lo que todavía no está listo](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo)
@@ -92,6 +93,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 | Poner o quitar la franja amarilla de aviso | [9](#9-ajustes--inap-contacto-y-enlaces) |
 | Cambiar las búsquedas populares del buscador | [9.1](#91-el-buscador-del-sitio) |
 | Cambiar los textos o enlaces de la página 404 | [9.2](#92-la-página-no-encontramos-esta-página-404) |
+| Cambiar los textos de la página de resultados de búsqueda | [9.4](#94-página-de-resultados-de-búsqueda) |
 | Leer los mensajes del formulario de contacto | [9.3](#93-página-de-contacto-y-mensajes) |
 | Cambiar los temas o el correo que recibe los mensajes de contacto | [9.3](#93-página-de-contacto-y-mensajes) |
 | Borrar el contenido de ejemplo | [12](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo) |
@@ -644,6 +646,7 @@ En **Ajustes › INAP**:
 | **Texto del aviso** | Franja amarilla arriba de todas las páginas, por ejemplo para una versión de demostración. Vacío = sin aviso. |
 | **Búsquedas populares** | Botones de la lista del buscador ([9.1](#91-el-buscador-del-sitio)). Una por renglón, hasta 8. |
 | **Mostrar «¿Buscas cursos?»** | Enlace al final de la lista del buscador hacia la búsqueda de la plataforma de cursos ([9.1](#91-el-buscador-del-sitio)). |
+| **Página de resultados de búsqueda** | Título, sugerencias cuando no hay resultados y tarjeta «¿Buscas cursos?» ([9.4](#94-página-de-resultados-de-búsqueda)). |
 | **Página no encontrada (404)** | Los textos de la página que sale cuando una dirección no existe ([9.2](#92-la-página-no-encontramos-esta-página-404)). |
 
 Los datos de la **Unidad de Información Pública** son distintos y se cambian en Transparencia › Textos y ajustes ([7](#7-transparencia-textos-y-ajustes)).
@@ -666,7 +669,7 @@ Al tocar el buscador (en la barra, en el inicio o en el menú de celular) se abr
 - **Sugerencias:** hasta 3 frases para completar la búsqueda. Salen de las búsquedas populares, de los temas de las noticias y de los títulos de noticias, eventos, páginas y numerales que contienen lo escrito.
 - **Noticias y eventos:** hasta 2, con su fecha.
 - **Páginas:** hasta 2, incluidos los 29 numerales de Transparencia.
-- **Ver todos los resultados** abre la página de resultados, que también busca en el texto de las noticias y páginas, no solo en el título.
+- **Ver todos los resultados** abre la página de resultados ([9.4](#94-página-de-resultados-de-búsqueda)), que también busca en el texto de las noticias, eventos y páginas, no solo en el título.
 
 No importan las mayúsculas ni los acentos: «etica» encuentra «Ética». Para que una noticia aparezca, su **título** debe tener las palabras que la gente busca.
 
@@ -721,6 +724,20 @@ Otro tema
 Los temas sin correo llegan al **Correo que recibe los mensajes**.
 
 > Protección contra envíos automáticos: el formulario descarta los mensajes de robots y acepta hasta 5 mensajes cada 10 minutos desde la misma conexión.
+
+### 9.4 Página de resultados de búsqueda
+
+Sale al pulsar **Buscar** o **Ver todos los resultados** en cualquier buscador del sitio. Busca en el título y el texto de las **noticias**, **eventos** y **páginas**, y en los nombres de los **29 numerales** de Transparencia.
+
+- **Pestañas** Todo · Noticias · Eventos · Páginas, cada una con su total. Los numerales cuentan como páginas.
+- **Cada resultado:** tipo y fecha (noticia), fecha y hora (evento) o dirección (página); el título lleva a la noticia, evento o página, y debajo sale el resumen o el trozo del texto donde aparece lo buscado. Las palabras buscadas salen en negrita.
+- **10 resultados por página**, con números de página al final.
+- **Tarjeta «¿Buscas cursos?»:** lleva a la búsqueda de la plataforma de cursos con las mismas palabras. Se oculta con **Mostrar «¿Buscas cursos?»** ([9.1](#91-el-buscador-del-sitio)).
+- **Sin resultados:** salen las **Sugerencias** y los **Enlaces útiles** (los mismos del menú «Enlaces útiles (página 404)», [9.2](#92-la-página-no-encontramos-esta-página-404)).
+
+**Textos:** en **Ajustes › INAP › Página de resultados de búsqueda**: el título, las sugerencias (una por renglón) y el título y texto de la tarjeta de cursos. Las frases con el total («5 resultados para…») se arman solas.
+
+> Para que una noticia salga primero, sus palabras clave deben estar en el **título**: la búsqueda da más peso al título que al texto.
 
 ---
 
@@ -787,7 +804,6 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 ### Lo que todavía no está listo
 
 - **Formulario «Solicitud de información»:** revisa que los datos estén completos, pero **todavía no envía ni guarda la solicitud**. Falta acordar con la Unidad de Información Pública cómo se reciben (correo o sistema propio). Mientras tanto, el inicio de Transparencia muestra el correo de la Unidad.
-- **Página de resultados de búsqueda:** funciona con un diseño provisional. Muestra noticias, eventos y páginas; los numerales de Transparencia aparecen en la lista del buscador ([9.1](#91-el-buscador-del-sitio)) y en **Buscar un numeral**, en Información pública de oficio.
 - **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.
 - **Demás secciones del sitio** (Formación, Fortalecimiento, Recursos, Institución, Preguntas frecuentes y Nuestras delegaciones): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.

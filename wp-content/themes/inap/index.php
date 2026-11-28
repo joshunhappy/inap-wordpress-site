@@ -1,12 +1,11 @@
 <?php
 /**
- * Plantilla general y provisional: páginas y resultados de búsqueda (Noticias, Eventos y 404 tienen la suya).
+ * Plantilla general y provisional: páginas y listas sin diseño propio (Noticias, Eventos, búsqueda y 404 tienen la suya).
  */
 get_header();
 
 $lista = !is_singular();
 $titulo = match (true) {
-    is_search() => sprintf('Resultados para «%s»', get_search_query()),
     is_home() => get_the_title((int) get_option('page_for_posts')) ?: 'Noticias',
     is_post_type_archive(INAP_EVENTO) => 'Próximos eventos',
     is_category() => single_cat_title('', false),
@@ -16,13 +15,6 @@ $titulo = match (true) {
 <main id="contenido" tabindex="-1" class="mx-auto w-full max-w-180 px-4 py-10 lg:py-16">
   <?php if ($lista) : ?>
     <h1 class="text-3xl font-bold text-base-content lg:text-4xl"><?php echo esc_html($titulo); ?></h1>
-    <?php if (is_search()) : ?>
-      <form role="search" action="<?php echo esc_url(home_url('/')); ?>" class="mt-6 flex gap-2">
-        <label for="buscar-q" class="sr-only">Buscar en el sitio</label>
-        <input id="buscar-q" name="s" type="search" value="<?php echo esc_attr(get_search_query()); ?>" class="input min-w-0 flex-1" />
-        <button type="submit" class="btn btn-primary">Buscar</button>
-      </form>
-    <?php endif; ?>
     <?php if (have_posts()) : ?>
       <ul class="mt-8 flex flex-col">
         <?php while (have_posts()) : the_post();
@@ -47,7 +39,7 @@ $titulo = match (true) {
     <?php elseif (is_post_type_archive(INAP_EVENTO)) : ?>
       <p class="mt-6 text-neutral-text"><?php echo esc_html(inap_inicio('noticias', 'eventos_vacio')); ?></p>
     <?php else : ?>
-      <p class="mt-6 text-neutral-text">No encontramos resultados. Prueba con otras palabras.</p>
+      <p class="mt-6 text-neutral-text">Aún no hay contenido aquí.</p>
     <?php endif; ?>
   <?php else : while (have_posts()) : the_post();
     $evento = get_post_type() === INAP_EVENTO ? inap_evento_datos(get_post()) : null;
