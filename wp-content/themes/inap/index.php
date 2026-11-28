@@ -1,7 +1,6 @@
 <?php
 /**
- * Plantilla general: una noticia, evento o página, o una lista (Noticias, Eventos, resultados de búsqueda).
- * Provisional hasta construir los diseños de Noticias y Eventos en Figma.
+ * Plantilla general y provisional: páginas y resultados de búsqueda (Noticias, Eventos y 404 tienen la suya).
  */
 get_header();
 
@@ -11,14 +10,13 @@ $titulo = match (true) {
     is_home() => get_the_title((int) get_option('page_for_posts')) ?: 'Noticias',
     is_post_type_archive(INAP_EVENTO) => 'Próximos eventos',
     is_category() => single_cat_title('', false),
-    is_404() => 'No encontramos esta página',
     default => get_the_archive_title(),
 };
 ?>
 <main id="contenido" tabindex="-1" class="mx-auto w-full max-w-180 px-4 py-10 lg:py-16">
   <?php if ($lista) : ?>
     <h1 class="text-3xl font-bold text-base-content lg:text-4xl"><?php echo esc_html($titulo); ?></h1>
-    <?php if (is_search() || is_404()) : ?>
+    <?php if (is_search()) : ?>
       <form role="search" action="<?php echo esc_url(home_url('/')); ?>" class="mt-6 flex gap-2">
         <label for="buscar-q" class="sr-only">Buscar en el sitio</label>
         <input id="buscar-q" name="s" type="search" value="<?php echo esc_attr(get_search_query()); ?>" class="input min-w-0 flex-1" />
@@ -48,10 +46,8 @@ $titulo = match (true) {
       <div class="mt-8"><?php the_posts_pagination(['prev_text' => 'Anteriores', 'next_text' => 'Siguientes']); ?></div>
     <?php elseif (is_post_type_archive(INAP_EVENTO)) : ?>
       <p class="mt-6 text-neutral-text"><?php echo esc_html(inap_inicio('noticias', 'eventos_vacio')); ?></p>
-    <?php elseif (!is_404()) : ?>
-      <p class="mt-6 text-neutral-text">No encontramos resultados. Prueba con otras palabras.</p>
     <?php else : ?>
-      <p class="mt-6"><a class="rounded-sm text-primary-text underline <?php echo INAP_FOCUS; ?>" href="<?php echo esc_url(home_url('/')); ?>">Ir al inicio</a></p>
+      <p class="mt-6 text-neutral-text">No encontramos resultados. Prueba con otras palabras.</p>
     <?php endif; ?>
   <?php else : while (have_posts()) : the_post();
     $evento = get_post_type() === INAP_EVENTO ? inap_evento_datos(get_post()) : null;

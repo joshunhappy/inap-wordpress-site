@@ -49,6 +49,16 @@ function inap_ajustes_grupos(): array
                         ['aviso', 'Texto del aviso', 'text', '', 'Por ejemplo: «Versión de demostración: los datos de Transparencia son de ejemplo».'],
                     ],
                 ],
+                'Página no encontrada (404)' => [
+                    'ayuda' => 'Sale cuando alguien abre una dirección que no existe. Los enlaces de abajo se editan en Apariencia › Menús, menú «Enlaces útiles (página 404)».',
+                    'campos' => [
+                        ['e404_antetitulo', 'Texto sobre el título', 'text', 'Error 404 · Página no encontrada', ''],
+                        ['e404_titulo', 'Título', 'text', 'No encontramos esta página', ''],
+                        ['e404_texto', 'Texto', 'textarea', 'Puede que la dirección esté mal escrita o que la página haya cambiado de lugar. Búscala o sigue alguno de estos enlaces.', ''],
+                        ['e404_buscar', 'Etiqueta del buscador', 'text', 'Buscar en el sitio', ''],
+                        ['e404_enlaces', 'Título de los enlaces', 'text', 'Enlaces útiles', ''],
+                    ],
+                ],
             ],
         ],
     ]);

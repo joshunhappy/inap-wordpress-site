@@ -22,7 +22,8 @@ Páginas:
 | `/{noticia}/` | Sitio institucional · Noticia (`single-post.php`) |
 | `/eventos/` (`?tipo=`, `?modalidad=`, `?q=`) | Sitio institucional · Eventos (`archive-inap_evento.php`) |
 | `/eventos/{evento}/` (`?calendario=1` = archivo .ics) | Sitio institucional · Evento (`single-inap_evento.php`) |
-| `/?s=…`, 404 | Sin diseño aún: lista provisional (`index.php`) |
+| Dirección que no existe (404) | Sitio institucional · 404 (`404.php`; textos en Ajustes › INAP, enlaces en el menú «Enlaces útiles (página 404)») |
+| `/?s=…` | Sin diseño aún: lista provisional (`index.php`) |
 | `/transparencia/` | Transparencia · Inicio · Formulario |
 | `/transparencia/informacion-publica-de-oficio/` | Información pública de oficio |
 | `/transparencia/articulo-10/8-informes-de-ejecucion-presupuestaria/` | Numeral (meses; `?meses` lo abre) |
@@ -55,7 +56,7 @@ Pensado para Comunicación Social con el rol **Editor** (sin plugins):
 | Eventos (tipo `inap_evento`: fecha, horas, modalidad, lugar, transmisión, costo, inscripción; `inc/eventos.php`) | Eventos |
 | Tipos de evento (taxonomía `inap_tipo_evento`) | Eventos › Tipos |
 | Textos de /eventos/ y de cada evento | Eventos › Página de eventos (`inc/eventos.php`) |
-| Barra superior, mega menús, menú de celular, pie y redes | Apariencia › Menús (4 menús; la estructura está al inicio de `inc/menus.php`) |
+| Barra superior, mega menús, menú de celular, pie y redes | Apariencia › Menús (5 menús, incluido «Enlaces útiles (página 404)»; la estructura está al inicio de `inc/menus.php`) |
 | Teléfono, correo y dirección generales; enlaces a la plataforma de cursos y al Aula virtual; búsquedas populares del buscador | Ajustes › INAP |
 | Numerales del artículo 10: meses, apartados, enlaces de OneDrive, avisos | Transparencia › Numerales |
 | Textos de las páginas de Transparencia, año, datos de la Unidad de Información Pública | Transparencia › Textos y ajustes |

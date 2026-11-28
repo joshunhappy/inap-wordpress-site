@@ -54,7 +54,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 6.8 [Al empezar un año nuevo](#68-al-empezar-un-año-nuevo)
 7. [Transparencia: textos y ajustes](#7-transparencia-textos-y-ajustes)
 8. [Menús: barra, mega menús, pie y redes](#8-menús-barra-mega-menús-pie-y-redes)
-   - 8.1 [Los cuatro menús](#81-los-cuatro-menús)
+   - 8.1 [Los menús](#81-los-menús)
    - 8.2 [Agregar un enlace](#82-agregar-un-enlace)
    - 8.3 [Estructura del menú principal](#83-estructura-del-menú-principal)
    - 8.4 [Descripción y pestaña nueva](#84-descripción-y-pestaña-nueva)
@@ -62,6 +62,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
    - 8.6 [Pie de página y redes](#86-pie-de-página-y-redes)
 9. [Ajustes › INAP: contacto y enlaces](#9-ajustes--inap-contacto-y-enlaces)
    - 9.1 [El buscador del sitio](#91-el-buscador-del-sitio)
+   - 9.2 [La página «No encontramos esta página» (404)](#92-la-página-no-encontramos-esta-página-404)
 10. [Buenas prácticas al escribir](#10-buenas-prácticas-al-escribir)
 11. [Problemas frecuentes](#11-problemas-frecuentes)
 12. [Contenido de ejemplo y lo que todavía no está listo](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo)
@@ -89,6 +90,7 @@ Cada parte tiene un número (por ejemplo **2.3**) para encontrarla rápido y par
 | Cambiar el teléfono, el correo o la dirección | [9](#9-ajustes--inap-contacto-y-enlaces) |
 | Poner o quitar la franja amarilla de aviso | [9](#9-ajustes--inap-contacto-y-enlaces) |
 | Cambiar las búsquedas populares del buscador | [9.1](#91-el-buscador-del-sitio) |
+| Cambiar los textos o enlaces de la página 404 | [9.2](#92-la-página-no-encontramos-esta-página-404) |
 | Borrar el contenido de ejemplo | [12](#12-contenido-de-ejemplo-y-lo-que-todavía-no-está-listo) |
 
 ---
@@ -552,7 +554,7 @@ Pulsa **Guardar cambios** al final de la página.
 
 ## 8. Menús: barra, mega menús, pie y redes
 
-### 8.1 Los cuatro menús
+### 8.1 Los menús
 
 Los enlaces de navegación se editan en **Apariencia › Menús**. Elige cuál editar en la lista de arriba de la página y pulsa **Seleccionar**.
 
@@ -562,6 +564,7 @@ Los enlaces de navegación se editan en **Apariencia › Menús**. Elige cuál e
 | **Menú principal (mega menús)** | Los botones Formación, Fortalecimiento, Recursos e Institución y los paneles que abren; también las secciones del menú de celular |
 | **Pie de página** | Las columnas de enlaces del pie |
 | **Redes sociales** | Los enlaces a redes al final del pie |
+| **Enlaces útiles (página 404)** | Los enlaces de la página que sale cuando una dirección no existe ([9.2](#92-la-página-no-encontramos-esta-página-404)) |
 
 > «Aula virtual» no está en los menús: su enlace se cambia en **Ajustes › INAP** ([9](#9-ajustes--inap-contacto-y-enlaces)).
 
@@ -636,6 +639,7 @@ En **Ajustes › INAP**:
 | **Texto del aviso** | Franja amarilla arriba de todas las páginas, por ejemplo para una versión de demostración. Vacío = sin aviso. |
 | **Búsquedas populares** | Botones de la lista del buscador ([9.1](#91-el-buscador-del-sitio)). Una por renglón, hasta 8. |
 | **Mostrar «¿Buscas cursos?»** | Enlace al final de la lista del buscador hacia la búsqueda de la plataforma de cursos ([9.1](#91-el-buscador-del-sitio)). |
+| **Página no encontrada (404)** | Los textos de la página que sale cuando una dirección no existe ([9.2](#92-la-página-no-encontramos-esta-página-404)). |
 
 Los datos de la **Unidad de Información Pública** son distintos y se cambian en Transparencia › Textos y ajustes ([7](#7-transparencia-textos-y-ajustes)).
 
@@ -660,6 +664,24 @@ Al tocar el buscador (en la barra, en el inicio o en el menú de celular) se abr
 - **Ver todos los resultados** abre la página de resultados, que también busca en el texto de las noticias y páginas, no solo en el título.
 
 No importan las mayúsculas ni los acentos: «etica» encuentra «Ética». Para que una noticia aparezca, su **título** debe tener las palabras que la gente busca.
+
+### 9.2 La página «No encontramos esta página» (404)
+
+Sale cuando alguien abre una dirección que no existe (un enlace viejo, una dirección mal escrita o una noticia borrada). Tiene un buscador y una lista de enlaces útiles. Para verla, abre cualquier dirección inventada, por ejemplo `/prueba-404/`.
+
+**Textos:** en **Ajustes › INAP › Página no encontrada (404)**.
+
+| Campo | Qué es |
+| --- | --- |
+| **Texto sobre el título** | La línea pequeña de arriba: «Error 404 · Página no encontrada». Vacío = no sale. |
+| **Título** | «No encontramos esta página» |
+| **Texto** | El párrafo que explica qué pasó. Vacío = no sale. |
+| **Etiqueta del buscador** | «Buscar en el sitio». El buscador tiene la misma lista de sugerencias que el de la barra ([9.1](#91-el-buscador-del-sitio)). |
+| **Título de los enlaces** | «Enlaces útiles» |
+
+**Enlaces:** en **Apariencia › Menús**, menú **Enlaces útiles (página 404)** (se agregan y ordenan como en [8.2](#82-agregar-un-enlace)). Salen en dos columnas en computadora, leyendo de izquierda a derecha, y en una columna en celular. Solo se usa el 1.er nivel. Recomendado: 4 a 8 enlaces a las secciones más visitadas. Si el menú queda vacío, la sección no aparece.
+
+> «Contacto» lleva a `#` hasta que exista la página de contacto: cámbialo entonces en este menú y en la Barra superior.
 
 ---
 
@@ -724,7 +746,7 @@ Para seleccionar varias noticias o eventos a la vez: marca sus casillas en la li
 ### Lo que todavía no está listo
 
 - **Formulario «Solicitud de información»:** revisa que los datos estén completos, pero **todavía no envía ni guarda la solicitud**. Falta acordar con la Unidad de Información Pública cómo se reciben (correo o sistema propio). Mientras tanto, el inicio de Transparencia muestra el correo de la Unidad.
-- **Página de resultados de búsqueda y página «No encontramos esta página» (404):** funcionan con un diseño provisional. La página de resultados muestra noticias, eventos y páginas; los numerales de Transparencia aparecen en la lista del buscador ([9.1](#91-el-buscador-del-sitio)) y en **Buscar un numeral**, en Información pública de oficio.
+- **Página de resultados de búsqueda:** funciona con un diseño provisional. Muestra noticias, eventos y páginas; los numerales de Transparencia aparecen en la lista del buscador ([9.1](#91-el-buscador-del-sitio)) y en **Buscar un numeral**, en Información pública de oficio.
 - **Multimedia:** la sección aún no existe; su pestaña en Noticias está oculta mientras su dirección esté vacía ([3.7](#37-textos-de-la-página-noticias)).
 - **Páginas de Transparencia presupuestaria y Rendición de cuentas:** aún no están diseñadas. Sus tarjetas llevan a la dirección que se ponga en Textos y ajustes.
 - **Demás secciones del sitio** (Fortalecimiento, Recursos, Institución, Contacto): se agregarán al tema más adelante. Mientras tanto, sus enlaces en el inicio y en los menús llevan a `#`.

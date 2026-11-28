@@ -11,6 +11,7 @@
  *                     al abrir el elemento.
  *   Pie de página     1.er nivel = columnas; 2.º nivel = enlaces.
  *   Redes sociales    enlaces sueltos.
+ *   Enlaces útiles (página 404)  enlaces sueltos, en dos columnas en la página no encontrada.
  * La descripción de un enlace sale debajo del título en el mega menú (no en celular).
  * «Abrir en una pestaña nueva» le pone el ícono ↗ y el aviso para lectores de pantalla.
  */
@@ -22,6 +23,7 @@ const INAP_MENUS = [
     'principal' => 'Menú principal (mega menús)',
     'pie' => 'Pie de página',
     'redes' => 'Redes sociales',
+    'error404' => 'Enlaces útiles (página 404)',
 ];
 
 add_action('after_setup_theme', fn () => register_nav_menus(INAP_MENUS));
@@ -294,7 +296,7 @@ add_filter('get_user_option_managenav-menuscolumnshidden', function ($ocultas) {
 /* ── Contenido inicial ────────────────────────────────────────────────────── */
 
 /**
- * Crea los cuatro menús con el contenido de los diseños (parts/menus.json) si aún no tienen menú.
+ * Crea los menús con el contenido de los diseños (parts/menus.json) si aún no tienen menú.
  * No toca los menús que ya existen.
  */
 function inap_semilla_menus(): void
@@ -306,6 +308,8 @@ function inap_semilla_menus(): void
     }
     $ubicaciones = get_nav_menu_locations();
     $url = fn (string $titulo) => match ($titulo) {
+        'Inicio' => home_url('/'),
+        'Agenda académica' => untrailingslashit(inap_ajuste('inap_ajustes', 'plataforma_url')),
         'Transparencia' => home_url('/transparencia/'),
         'Noticias', 'Noticias INAP' => home_url('/noticias/'),
         'Eventos' => home_url('/eventos/'),
@@ -372,6 +376,11 @@ function inap_semilla_menus(): void
                     ]));
                 }
             }
+        }
+    }
+    if ($m = $crear('error404')) {
+        foreach (['Inicio', 'Agenda académica', 'Noticias', 'Eventos', 'Transparencia', 'Contacto'] as $t) {
+            $agregar($m, $t);
         }
     }
     set_theme_mod('nav_menu_locations', $ubicaciones);
